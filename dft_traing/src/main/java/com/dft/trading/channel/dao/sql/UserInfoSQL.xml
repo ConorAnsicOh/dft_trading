@@ -1,0 +1,28 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dft.trading.channel.dao.sql.UserInfoSQL">
+
+    <resultMap id="userInfoResultMap" type="com.dft.trading.channel.vo.UserInfoVO">
+        <id property="userId" column="user_id"/>
+        <result property="userPwd" column="user_pwd"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userNm" column="user_nm"/>
+        <result property="userNnm" column="user_nnm"/>
+        <result property="userState" column="user_state"/>
+        <result property="userDv" column="user_dv"/>
+        <result property="lstUdtDt" column="lst_udt_dt"/>
+    </resultMap>
+
+    <!-- userId로 유저 정보를 조회하는 쿼리 -->
+    <select id="getUserInfoByUserId" parameterType="String" resultMap="userInfoResultMap">
+        SELECT * FROM DFT_USER_INFO WHERE user_id = #{userId}
+    </select>
+
+    <!-- 모든 유저 정보를 조회하는 쿼리 -->
+    <select id="getAllUserInfo" resultMap="userInfoResultMap">
+        SELECT * FROM DFT_USER_INFO
+    </select>
+    
+</mapper>
