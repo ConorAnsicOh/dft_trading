@@ -22,11 +22,16 @@ public class ChannelController {
 
 		return "index";
 	}
+	
+	
+	
 
 	@RequestMapping(value = "/userInfo/{userId}", method = RequestMethod.GET)
 	public List<UserInfoVO> getUserInfoByUserId(@PathVariable String userId) {
 		System.out.println("************************** CONTROELLER >>> getUserInfoByUserId!!");
-
+		System.out.println("************************** CONTROELLER >>> getUserInfoByUserId!!");
+		System.out.println("************************** CONTROELLER >>> getUserInfoByUserId!!");
+		
 		System.out.println(userInfoBMO.getUserInfoByUserId(userId));
 		return userInfoBMO.getUserInfoByUserId(userId);
 
