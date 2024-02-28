@@ -27,10 +27,10 @@ public class ChannelController {
 	@RequestMapping(value = "/Login", method = RequestMethod.GET)
 	public String subMain() {
 		
-		return "/Log/LonLogn1100";
+		return "/Log/LogLogn1100";
 	}
 
-	@RequestMapping(value = "/LonLogn1100/{userId}&{userPwd}", method = RequestMethod.GET)
+	@RequestMapping(value = "/LogLogn1100/{userId}&{userPwd}", method = RequestMethod.GET)
 	public ModelAndView ReadLonLogn(@PathVariable String userId, String userPwd) {
         List<LogLognIO> returnList = lonLognCMO.getUserInfoByUserId(userId, userPwd);
 
