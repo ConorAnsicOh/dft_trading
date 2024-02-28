@@ -18,7 +18,7 @@ public class LonLognDMC extends SqlSessionDaoSupport implements LonLognDMO {
 	}
 
 	@Override
-	public List<LonLognIO> getUserInfoByUserId(String userId) {
+	public List<LonLognIO> getUserInfoByUserId(String userId, String userPwd) {
 		System.out.println("************************** DMC >>> getUserInfoByUserId!!");
 		return getSqlSession().selectList("com.dft.trading.channel.dao.sql.UserInfoSQL.getUserInfoByUserId", userId);
 	}

@@ -9,5 +9,5 @@ public interface LonLognDMO {
 
 	List<LonLognIO> getAllUserInfo();
 	
-	List<LonLognIO> getUserInfoByUserId(String userId);
+	List<LonLognIO> getUserInfoByUserId(String userId, String userPwd);
 }

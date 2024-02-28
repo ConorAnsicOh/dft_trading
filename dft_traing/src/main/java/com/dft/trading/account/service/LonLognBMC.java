@@ -22,8 +22,8 @@ public class LonLognBMC implements LonLognBMO {
 	}
 
 	@Override
-	public List<LonLognIO> getUserInfoByUserId(String userId) {
+	public List<LonLognIO> getUserInfoByUserId(String userId, String userPwd) {
 		System.out.println("************************** BMC >>> getUserInfoByUserId!!");
-		return userInfoDMO.getUserInfoByUserId(userId);
+		return userInfoDMO.getUserInfoByUserId(userId, userPwd);
 	}
 }

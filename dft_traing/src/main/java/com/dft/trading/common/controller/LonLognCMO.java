@@ -13,16 +13,12 @@ import com.dft.trading.account.service.LonLognBMO;
 public class LonLognCMO {
 
 	@Autowired
-	private LonLognBMO userInfoBMO;
+	private LonLognBMO lonLognBMO;
 	
-	@RequestMapping(value = "/userInfo/{userId}", method = RequestMethod.GET)
-	public List<LonLognIO> getUserInfoByUserId(@PathVariable String userId) {
-		System.out.println("************************** CONTROELLER >>> getUserInfoByUserId!!");
-		System.out.println("************************** CONTROELLER >>> getUserInfoByUserId!!");
-		System.out.println("************************** CONTROELLER >>> getUserInfoByUserId!!");
+	@RequestMapping(value = "/LonLogn1100/{userId}&{userPwd}", method = RequestMethod.GET)
+	public List<LonLognIO> getUserInfoByUserId(@PathVariable String userId, String userPwd) {
 		
-		System.out.println(userInfoBMO.getUserInfoByUserId(userId));
-		return userInfoBMO.getUserInfoByUserId(userId);
+		return lonLognBMO.getUserInfoByUserId(userId, userPwd);
 
 	}
 }
