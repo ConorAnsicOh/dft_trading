@@ -13,7 +13,7 @@ import com.dft.trading.account.io.LogLognIO;
 import com.dft.trading.common.controller.LogLognCMO;
 
 @Controller
-public class ChannelController {
+public class BoardController {
 	
 	 @Autowired
     private LogLognCMO lonLognCMO;
