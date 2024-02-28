@@ -25,14 +25,12 @@ public class ChannelController {
 	}
 
 	@RequestMapping(value = "/LonLogn1100/{userId}&{userPwd}", method = RequestMethod.GET)
-	public ModelAndView endpoint1() {
-        List<LonLognIO> returnList = lonLognCMO.getUserInfoByUserId("userId", "userPwd");
+	public ModelAndView ReadLonLogn(@PathVariable String userId, String userPwd) {
+        List<LonLognIO> returnList = lonLognCMO.getUserInfoByUserId(userId, userPwd);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("data", returnList);
-
-        // View 이름 설정
-        modelAndView.setViewName("viewName");
+        modelAndView.setViewName("/Brd/BrdNews1100");
 
         return modelAndView;
 	}

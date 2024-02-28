@@ -15,6 +15,7 @@ import com.dft.trading.account.dao.LonLognDMC;
 import com.dft.trading.account.dao.LonLognDMO;
 import com.dft.trading.account.service.LonLognBMC;
 import com.dft.trading.account.service.LonLognBMO;
+import com.dft.trading.common.controller.LonLognCMO;
 
 
 // Bean 넣는곳
@@ -53,15 +54,20 @@ public class RootAppConfig {
     }
     
     @Bean // UserInfoBMO 서비스 빈을 추가
-    public LonLognBMO userInfoBMO() {
+    public LonLognBMO lonLognBMO() {
         return new LonLognBMC(); // 또는 여기서 적절한 방식으로 빈을 생성하고 반환
     }
     
+    @Bean // UserInfoBMO 서비스 빈을 추가
+    public LonLognCMO lonLognCMO() {
+        return new LonLognCMO(); // 또는 여기서 적절한 방식으로 빈을 생성하고 반환
+    }
+    
     @Bean // UserInfoDMO 빈을 추가
-    public LonLognDMO userInfoDMO(SqlSessionFactory sqlSessionFactory) {
-        LonLognDMC userInfoDMC = new LonLognDMC();
-        userInfoDMC.setSqlSessionFactory(sqlSessionFactory);
-        return userInfoDMC;
+    public LonLognDMO lonLognDMO(SqlSessionFactory sqlSessionFactory) {
+        LonLognDMC lonLognDMC = new LonLognDMC();
+        lonLognDMC.setSqlSessionFactory(sqlSessionFactory);
+        return lonLognDMC;
     }
 
 }
