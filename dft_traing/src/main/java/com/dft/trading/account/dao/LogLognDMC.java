@@ -5,20 +5,20 @@ import java.util.List;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import com.dft.trading.account.io.LonLognIO;
+import com.dft.trading.account.io.LogLognIO;
 
 
 @Repository
-public class LonLognDMC extends SqlSessionDaoSupport implements LonLognDMO {
+public class LogLognDMC extends SqlSessionDaoSupport implements LogLognDMO {
 	
 	@Override
-	public List<LonLognIO> getAllUserInfo() {
+	public List<LogLognIO> getAllUserInfo() {
 		System.out.println("************************** DMC >>> getAllUserInfo!!");
 		return getSqlSession().selectList("com.dft.trading.channel.dao.sql.UserInfoSQL.getAllUserInfo");
 	}
 
 	@Override
-	public List<LonLognIO> getUserInfoByUserId(String userId, String userPwd) {
+	public List<LogLognIO> getUserInfoByUserId(String userId, String userPwd) {
 		System.out.println("************************** DMC >>> getUserInfoByUserId!!");
 		return getSqlSession().selectList("com.dft.trading.channel.dao.sql.UserInfoSQL.getUserInfoByUserId", userId);
 	}

@@ -5,7 +5,7 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class LonLognIO {
+public class LogLognIO {
 	private String userId;
 	private String userPwd;
 	private String userEmail;

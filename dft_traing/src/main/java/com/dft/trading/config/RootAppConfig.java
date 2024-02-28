@@ -12,11 +12,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import com.dft.trading.account.dao.LonLognDMC;
-import com.dft.trading.account.dao.LonLognDMO;
-import com.dft.trading.account.service.LonLognBMC;
-import com.dft.trading.account.service.LonLognBMO;
-import com.dft.trading.common.controller.LonLognCMO;
+import com.dft.trading.account.dao.LogLognDMC;
+import com.dft.trading.account.dao.LogLognDMO;
 
 
 // Bean 넣는곳
@@ -56,8 +53,8 @@ public class RootAppConfig {
     }
     
     @Bean // UserInfoDMO 빈을 추가
-    public LonLognDMO lonLognDMO(SqlSessionFactory sqlSessionFactory) {
-        LonLognDMC lonLognDMC = new LonLognDMC();
+    public LogLognDMO lonLognDMO(SqlSessionFactory sqlSessionFactory) {
+        LogLognDMC lonLognDMC = new LogLognDMC();
         lonLognDMC.setSqlSessionFactory(sqlSessionFactory);
         return lonLognDMC;
     }
