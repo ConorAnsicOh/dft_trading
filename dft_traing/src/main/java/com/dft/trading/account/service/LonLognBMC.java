@@ -5,24 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dft.trading.account.dao.UserInfoDMO;
-import com.dft.trading.channel.io.UserInfoIO;
+import com.dft.trading.account.dao.LonLognDMO;
+import com.dft.trading.account.io.LonLognIO;
 
 @Service
-public class UserInfoBMC implements UserInfoBMO {
+public class LonLognBMC implements LonLognBMO {
 	
 	@Autowired
-	private UserInfoDMO userInfoDMO;	
+	private LonLognDMO userInfoDMO;	
 
 	@Override
-	public List<UserInfoIO> getAllUserInfo() {
+	public List<LonLognIO> getAllUserInfo() {
 		System.out.println("************************** BMC >>> getAllUserInfo!!");
 		return userInfoDMO.getAllUserInfo();
 		
 	}
 
 	@Override
-	public List<UserInfoIO> getUserInfoByUserId(String userId) {
+	public List<LonLognIO> getUserInfoByUserId(String userId) {
 		System.out.println("************************** BMC >>> getUserInfoByUserId!!");
 		return userInfoDMO.getUserInfoByUserId(userId);
 	}

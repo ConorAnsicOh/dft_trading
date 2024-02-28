@@ -11,10 +11,10 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import com.dft.trading.account.dao.UserInfoDMC;
-import com.dft.trading.account.dao.UserInfoDMO;
-import com.dft.trading.account.service.UserInfoBMC;
-import com.dft.trading.account.service.UserInfoBMO;
+import com.dft.trading.account.dao.LonLognDMC;
+import com.dft.trading.account.dao.LonLognDMO;
+import com.dft.trading.account.service.LonLognBMC;
+import com.dft.trading.account.service.LonLognBMO;
 
 
 // Bean 넣는곳
@@ -53,13 +53,13 @@ public class RootAppConfig {
     }
     
     @Bean // UserInfoBMO 서비스 빈을 추가
-    public UserInfoBMO userInfoBMO() {
-        return new UserInfoBMC(); // 또는 여기서 적절한 방식으로 빈을 생성하고 반환
+    public LonLognBMO userInfoBMO() {
+        return new LonLognBMC(); // 또는 여기서 적절한 방식으로 빈을 생성하고 반환
     }
     
     @Bean // UserInfoDMO 빈을 추가
-    public UserInfoDMO userInfoDMO(SqlSessionFactory sqlSessionFactory) {
-        UserInfoDMC userInfoDMC = new UserInfoDMC();
+    public LonLognDMO userInfoDMO(SqlSessionFactory sqlSessionFactory) {
+        LonLognDMC userInfoDMC = new LonLognDMC();
         userInfoDMC.setSqlSessionFactory(sqlSessionFactory);
         return userInfoDMC;
     }

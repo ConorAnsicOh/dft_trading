@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.dft.trading.account.service.UserInfoBMO;
-import com.dft.trading.channel.io.UserInfoIO;
+import com.dft.trading.account.service.LonLognBMO;
 
 @Controller
 public class ChannelController {
 
 	@Autowired
-	private UserInfoBMO userInfoBMO;
+	private LonLognBMO userInfoBMO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main() {
