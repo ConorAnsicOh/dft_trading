@@ -2,12 +2,12 @@ package com.dft.trading.account.service;
 
 import java.util.List;
 
-import com.dft.trading.channel.vo.UserInfoVO;
+import com.dft.trading.channel.io.UserInfoIO;
 
 public interface UserInfoBMO {
 
-	List<UserInfoVO> getAllUserInfo();
+	List<UserInfoIO> getAllUserInfo();
 
-	List<UserInfoVO> getUserInfoByUserId(String userId);
+	List<UserInfoIO> getUserInfoByUserId(String userId);
 	
 }

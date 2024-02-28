@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.dft.trading.account.service.UserInfoBMO;
-import com.dft.trading.channel.vo.UserInfoVO;
+import com.dft.trading.channel.io.UserInfoIO;
 
 @Controller
 public class ChannelController {

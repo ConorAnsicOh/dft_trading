@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dft.trading.account.dao.UserInfoDMO;
-import com.dft.trading.channel.vo.UserInfoVO;
+import com.dft.trading.channel.io.UserInfoIO;
 
 @Service
 public class UserInfoBMC implements UserInfoBMO {
@@ -15,14 +15,14 @@ public class UserInfoBMC implements UserInfoBMO {
 	private UserInfoDMO userInfoDMO;	
 
 	@Override
-	public List<UserInfoVO> getAllUserInfo() {
+	public List<UserInfoIO> getAllUserInfo() {
 		System.out.println("************************** BMC >>> getAllUserInfo!!");
 		return userInfoDMO.getAllUserInfo();
 		
 	}
 
 	@Override
-	public List<UserInfoVO> getUserInfoByUserId(String userId) {
+	public List<UserInfoIO> getUserInfoByUserId(String userId) {
 		System.out.println("************************** BMC >>> getUserInfoByUserId!!");
 		return userInfoDMO.getUserInfoByUserId(userId);
 	}

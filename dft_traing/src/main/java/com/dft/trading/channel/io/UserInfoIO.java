@@ -1,11 +1,11 @@
-package com.dft.trading.channel.vo;
+package com.dft.trading.channel.io;
 
 import java.sql.Date;
 
 import lombok.Data;
 
 @Data
-public class UserInfoVO {
+public class UserInfoIO {
 	private String userId;
 	private String userPwd;
 	private String userEmail;
