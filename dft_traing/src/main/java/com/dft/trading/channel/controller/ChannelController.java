@@ -7,21 +7,35 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.dft.trading.account.service.LonLognBMO;
+import com.dft.trading.account.io.LonLognIO;
+import com.dft.trading.common.controller.LonLognCMO;
 
 @Controller
 public class ChannelController {
-
-	@Autowired
-	private LonLognBMO userInfoBMO;
+	
+	 @Autowired
+    private LonLognCMO lonLognCMO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main() {
 
 		return "/Brd/BrdNews1100";
 	}
-	
+
+	@RequestMapping(value = "/LonLogn1100/{userId}&{userPwd}", method = RequestMethod.GET)
+	public ModelAndView endpoint1() {
+        List<LonLognIO> returnList = lonLognCMO.getUserInfoByUserId("userId", "userPwd");
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("data", returnList);
+
+        // View 이름 설정
+        modelAndView.setViewName("viewName");
+
+        return modelAndView;
+	}
 	
 	
 

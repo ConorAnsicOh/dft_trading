@@ -16,7 +16,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		// TODO Auto-generated method stub
 		WebMvcConfigurer.super.configureViewResolvers(registry);
-		registry.jsp("/WEB-INF/views/chennel/",".jsp");
+		registry.jsp("/WEB-INF/views/channel/",".jsp");
 	}
 	
 	@Override
