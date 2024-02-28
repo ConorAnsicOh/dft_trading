@@ -1,4 +1,4 @@
-package com.dft.trading.channel.dao;
+package com.dft.trading.account.dao;
 
 import java.util.List;
 

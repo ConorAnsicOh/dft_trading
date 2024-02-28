@@ -11,10 +11,10 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import com.dft.trading.channel.dao.UserInfoDMC;
-import com.dft.trading.channel.dao.UserInfoDMO;
-import com.dft.trading.channel.service.UserInfoBMC;
-import com.dft.trading.channel.service.UserInfoBMO;
+import com.dft.trading.account.dao.UserInfoDMC;
+import com.dft.trading.account.dao.UserInfoDMO;
+import com.dft.trading.account.service.UserInfoBMC;
+import com.dft.trading.account.service.UserInfoBMO;
 
 
 // Bean 넣는곳
