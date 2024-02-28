@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,6 +22,7 @@ import com.dft.trading.common.controller.LonLognCMO;
 // Bean 넣는곳
 @Configuration
 @MapperScan("com.dft.trading.channel.dao")
+@ComponentScan({"com.dft.trading.account.service", "com.dft.trading.common.controller"})
 public class RootAppConfig {
 	@Bean
     public DataSource dataSource() {
@@ -51,16 +53,6 @@ public class RootAppConfig {
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);
-    }
-    
-    @Bean // UserInfoBMO 서비스 빈을 추가
-    public LonLognBMO lonLognBMO() {
-        return new LonLognBMC(); // 또는 여기서 적절한 방식으로 빈을 생성하고 반환
-    }
-    
-    @Bean // UserInfoBMO 서비스 빈을 추가
-    public LonLognCMO lonLognCMO() {
-        return new LonLognCMO(); // 또는 여기서 적절한 방식으로 빈을 생성하고 반환
     }
     
     @Bean // UserInfoDMO 빈을 추가
