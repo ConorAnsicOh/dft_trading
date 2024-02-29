@@ -2,6 +2,7 @@ package com.dft.trading.channel.controller;
 
 import java.util.List;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,15 +15,22 @@ import com.dft.trading.common.controller.LogLognCMO;
 
 
 @Controller
+@MapperScan("/Login")
 public class LoginController {
 	
 	@Autowired
     private LogLognCMO lonLognCMO;
 	
-	@RequestMapping(value = "/Login", method = RequestMethod.GET)
-	public String subMain() {
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String logLogn() {
 		
 		return "/Log/LogLogn1100";
+	}
+	
+	@RequestMapping(value = "/Fdpw", method = RequestMethod.GET)
+	public String logFdpw() {
+		
+		return "/Log/LogLogn1101";
 	}
 
 	@RequestMapping(value = "/LogLogn1100/{userId}&{userPwd}", method = RequestMethod.GET)

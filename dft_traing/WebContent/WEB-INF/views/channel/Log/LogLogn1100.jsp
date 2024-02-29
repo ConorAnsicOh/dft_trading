@@ -61,7 +61,7 @@
 		<p class="loginMenu">
 			<a href="#" class="join" onclick="$.NXLogin.Join('P_LOGIN'); return false;">회원가입</a>
 			<a href="#" class="schId" onclick="$.NXLogin.findID('P_LOGIN'); return false;">넥슨ID 찾기</a>
-			<a href="#" class="schPass" onclick="$.NXLogin.findPW('P_LOGIN'); return false;">비밀번호 찾기</a>
+			<a href="Login/Fdpw" class="schPass" onclick="$.NXLogin.findPW('P_LOGIN'); return false;">비밀번호 찾기</a>
 			<a href="https://security.nexon.com" data-a2s="click" data-object="P_LOGIN" data-option="{&quot;Name&quot;:&quot;Security&quot;}" class="sec">보안센터</a>
 		</p>
 		
