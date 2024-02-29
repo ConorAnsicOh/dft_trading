@@ -67,7 +67,7 @@ li {
             </a>
             <h3>
 				<a href="/Login" style="margin-right:20px;">로그인</a>
-				<a href="/SingUp">회원가입</a>
+				<a href="/SingUp">회원asdasdasdasd가입</a>
       	 	</h3>
         </h1>
         

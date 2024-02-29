@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>회원가입</title>
+        <title>회원가입!</title>
         <!-- Bootstrap -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
