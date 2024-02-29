@@ -12,18 +12,18 @@ import com.dft.trading.account.io.LogLognIO;
 public class LogLognBMC implements LogLognBMO {
 	
 	@Autowired
-	private LogLognDMO userInfoDMO;	
+	private LogLognDMO logLognDMO;	
 
 	@Override
 	public List<LogLognIO> getAllUserInfo() {
 		System.out.println("************************** BMC >>> getAllUserInfo!!");
-		return userInfoDMO.getAllUserInfo();
+		return logLognDMO.getAllUserInfo();
 		
 	}
 
 	@Override
 	public List<LogLognIO> getUserInfoByUserId(String userId, String userPwd) {
 		System.out.println("************************** BMC >>> getUserInfoByUserId!!");
-		return userInfoDMO.getUserInfoByUserId(userId, userPwd);
+		return logLognDMO.getUserInfoByUserId(userId, userPwd);
 	}
 }

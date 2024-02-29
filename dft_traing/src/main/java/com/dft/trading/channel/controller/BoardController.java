@@ -15,8 +15,8 @@ import com.dft.trading.common.controller.LogLognCMO;
 @Controller
 public class BoardController {
 	
-	 @Autowired
-    private LogLognCMO lonLognCMO;
+	@Autowired
+    private LogLognCMO logLognCMO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main() {
@@ -32,7 +32,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/LogLogn1100/{userId}&{userPwd}", method = RequestMethod.GET)
 	public ModelAndView ReadLonLogn(@PathVariable String userId, String userPwd) {
-        List<LogLognIO> returnList = lonLognCMO.getUserInfoByUserId(userId, userPwd);
+        List<LogLognIO> returnList = logLognCMO.getUserInfoByUserId(userId, userPwd);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("data", returnList);

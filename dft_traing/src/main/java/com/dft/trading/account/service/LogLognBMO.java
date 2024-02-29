@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.dft.trading.account.io.LogLognIO;
 
-@Repository
 public interface LogLognBMO {
 
 	List<LogLognIO> getAllUserInfo();

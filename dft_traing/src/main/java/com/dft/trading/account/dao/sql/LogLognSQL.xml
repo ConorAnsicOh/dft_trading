@@ -2,9 +2,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dft.trading.channel.dao.sql.UserInfoSQL">
+<mapper namespace="com.dft.trading.account.dao.sql.LogLognSQL">
 
-    <resultMap id="userInfoResultMap" type="com.dft.trading.channel.vo.UserInfoVO">
+    <resultMap id="userInfoResultMap" type="com.dft.trading.channel.io.UserInfoIO">
         <id property="userId" column="user_id"/>
         <result property="userPwd" column="user_pwd"/>
         <result property="userEmail" column="user_email"/>

@@ -14,13 +14,13 @@ public class LogLognDMC extends SqlSessionDaoSupport implements LogLognDMO {
 	@Override
 	public List<LogLognIO> getAllUserInfo() {
 		System.out.println("************************** DMC >>> getAllUserInfo!!");
-		return getSqlSession().selectList("com.dft.trading.channel.dao.sql.UserInfoSQL.getAllUserInfo");
+		return getSqlSession().selectList("com.dft.trading.account.dao.sql.UserInfoSQL.getAllUserInfo");
 	}
 
 	@Override
 	public List<LogLognIO> getUserInfoByUserId(String userId, String userPwd) {
 		System.out.println("************************** DMC >>> getUserInfoByUserId!!");
-		return getSqlSession().selectList("com.dft.trading.channel.dao.sql.UserInfoSQL.getUserInfoByUserId", userId);
+		return getSqlSession().selectList("com.dft.trading.account.dao.sql.UserInfoSQL.getUserInfoByUserId", userId);
 	}
 
 }

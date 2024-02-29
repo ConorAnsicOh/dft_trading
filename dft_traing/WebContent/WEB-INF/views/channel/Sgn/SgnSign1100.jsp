@@ -50,7 +50,7 @@
                 
  
  
-            <form class="form-horizontal" role="form" method="post" action="">
+            <form class="form-horizontal" role="form" method="post" id="singform">
                 <div class="form-group" id="divId">
                     <label for="inputId" class="col-lg-2 control-label">아이디</label>
                     <div class="col-lg-10">
@@ -61,7 +61,7 @@
                 <div class="form-group" id="divPassword">
                     <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" id="userPwd" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="20">
+                        <input type="password" class="form-control" id="userPw" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="20">
                     </div>
                 </div>
                 <div class="form-group" id="divPasswordCheck">
@@ -114,7 +114,7 @@ function singUp(){
 		alert("비밀번호 확인를 입력해주세요!!");
 		return false;
 	}
-	if($("#userPwd").val() != $("#userPwdCheck").val()){
+	if($("#userPw").val() != $("#userPwdCheck").val()){
 		alert("비밀번호가 맞지않습니다!!");
 		return false;
 	}
@@ -130,6 +130,22 @@ function singUp(){
 		alert("이메일을 입력해주세요!!");
 		return false;
 	}
+	var singform = $('#singform');
+	 
+	    $.ajax({
+	        type: "POST",
+	        url: "/SgnSingUp", // 서버의 컨트롤러 엔드포인트
+	        data: singform.serialize(), // 폼 데이터 직렬화하여 전송
+	        success: function(response) {
+	            // 요청이 성공했을 때 수행할 작업
+	            console.log(response);
+	        },
+	        error: function(xhr, status, error) {
+	            // 요청이 실패했을 때 수행할 작업
+	            console.error(error);
+	        }
+	    });
+	 
 }
 //중복체크
 function DuplicateCheck(){

@@ -14,11 +14,14 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.dft.trading.account.dao.LogLognDMC;
 import com.dft.trading.account.dao.LogLognDMO;
+import com.dft.trading.account.dao.SgnSingDMC;
+import com.dft.trading.account.dao.SgnSingDMO;
+import com.dft.trading.common.controller.LogLognCMO;
 
 
 // Bean 넣는곳
 @Configuration
-@MapperScan("com.dft.trading.channel.dao")
+@MapperScan("com.dft.trading.account.dao")
 @ComponentScan({"com.dft.trading.account.service", "com.dft.trading.common.controller"})
 public class RootAppConfig {
 	@Bean
@@ -40,7 +43,7 @@ public class RootAppConfig {
 		sessionFactory.setDataSource(dataSource);
 		
 		PathMatchingResourcePatternResolver pmrpResolver = new PathMatchingResourcePatternResolver();
-		sessionFactory.setMapperLocations(pmrpResolver.getResources("classpath*:com/dft/trading/channel/dao/sql/*.xml"));
+		sessionFactory.setMapperLocations(pmrpResolver.getResources("classpath*:com/dft/trading/account/dao/sql/*.xml"));
 		
 		return sessionFactory.getObject();
 	}
@@ -54,9 +57,14 @@ public class RootAppConfig {
     
     @Bean // UserInfoDMO 빈을 추가
     public LogLognDMO lonLognDMO(SqlSessionFactory sqlSessionFactory) {
-        LogLognDMC lonLognDMC = new LogLognDMC();
-        lonLognDMC.setSqlSessionFactory(sqlSessionFactory);
-        return lonLognDMC;
+        LogLognDMC logLognDMC = new LogLognDMC();
+        logLognDMC.setSqlSessionFactory(sqlSessionFactory);
+        return logLognDMC;
     }
-
+    @Bean
+    public SgnSingDMO sgnSingDMO(SqlSessionFactory sqlSessionFactory) {
+    	SgnSingDMC sgnSingDMC = new SgnSingDMC();
+    	sgnSingDMC.setSqlSessionFactory(sqlSessionFactory);
+        return sgnSingDMC;
+    }
 }
