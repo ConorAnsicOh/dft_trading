@@ -22,7 +22,7 @@
                 <p></p>
                 <div class="col-md-12">
                     <small>
-                     회원가입!
+                     회원가입!!
                     </small>
                 </div>
             </div>
