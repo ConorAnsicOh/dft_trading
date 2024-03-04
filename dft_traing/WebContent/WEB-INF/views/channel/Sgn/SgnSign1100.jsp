@@ -50,18 +50,18 @@
                 
  
  
-            <form class="form-horizontal" role="form" method="post" id="singform">
-                <div class="form-group" id="divId">
+            <form class="form-horizontal" id="singform">
+                <div class="form-group">
                     <label for="inputId" class="col-lg-2 control-label">아이디</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control onlyAlphabetAndNumber" id="userId"  data-rule-required="true" placeholder="아이디를 입력해주세요" maxlength="20">
+                        <input type="text" class="form-control onlyAlphabetAndNumber" id="userId" name="userId"  data-rule-required="true" placeholder="아이디를 입력해주세요" maxlength="20">
 	                    <div style="text-align: right;"><button type="button" class="btn btn-primary" onclick="DuplicateCheck()">중복체크</button></div>
                     </div>
                 </div>
                 <div class="form-group" id="divPassword">
                     <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" id="userPw" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="20">
+                        <input type="password" class="form-control" id="userPw" name="userPw" data-rule-required="true" placeholder="패스워드" maxlength="20">
                     </div>
                 </div>
                 <div class="form-group" id="divPasswordCheck">
@@ -73,21 +73,21 @@
                 <div class="form-group" id="divName">
                     <label for="inputName" class="col-lg-2 control-label">이름</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control onlyHangul" id="userNm" data-rule-required="true" placeholder="이름을 입력해주세요" maxlength="15">
+                        <input type="text" class="form-control onlyHangul" id="userNm" name="userNm" data-rule-required="true" placeholder="이름을 입력해주세요" maxlength="15">
                     </div>
                 </div>
                 
                 <div class="form-group" id="divNickname">
                     <label for="inputNickname" class="col-lg-2 control-label">닉네임</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" id="userNnm" data-rule-required="true" placeholder="닉네임을 입력해주세요" maxlength="15">
+                        <input type="text" class="form-control" id="userNnm" name="userNnm" data-rule-required="true" placeholder="닉네임을 입력해주세요" maxlength="15">
                     </div>
                 </div>
                 
                 <div class="form-group" id="divEmail">
                     <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
                     <div class="col-lg-10">
-                        <input type="email" class="form-control" id="userEmail" data-rule-required="true" placeholder="이메일을 입력해주세요" maxlength="40">
+                        <input type="email" class="form-control" id="userEmail" name="userEmail" data-rule-required="true" placeholder="이메일을 입력해주세요" maxlength="40">
                     </div>
                 </div>
                 <div class="form-group">
@@ -133,12 +133,12 @@ function singUp(){
 	var singform = $('#singform');
 	 
 	    $.ajax({
-	        type: "POST",
+	        type: "post",
 	        url: "/SgnSingUp", // 서버의 컨트롤러 엔드포인트
 	        data: singform.serialize(), // 폼 데이터 직렬화하여 전송
 	        success: function(response) {
 	            // 요청이 성공했을 때 수행할 작업
-	            console.log(response);
+	            alert("회원가입 선공");
 	        },
 	        error: function(xhr, status, error) {
 	            // 요청이 실패했을 때 수행할 작업
@@ -149,7 +149,21 @@ function singUp(){
 }
 //중복체크
 function DuplicateCheck(){
-	alert("준비중....");
+	var userid = $("#userId").val();
+	console.log("userid::", userid);
+    $.ajax({
+        type: "get",
+        url: "/duplicateCheck", // 서버의 컨트롤러 엔드포인트
+        data: singform.serialize(),
+        success: function(response) {
+            // 요청이 성공했을 때 수행할 작업
+            alert("요청됨 ?");
+        },
+        error: function(xhr, status, error) {
+            // 요청이 실패했을 때 수행할 작업
+            console.error(error);
+        }
+    });
 }
 
 </script>

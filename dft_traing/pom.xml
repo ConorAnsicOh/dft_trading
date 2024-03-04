@@ -127,6 +127,12 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>${org.mybatis.spring-version}</version>
 		</dependency>
-
+		
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>33.0.0-jre</version>
+		</dependency>
+		
 	</dependencies>
 </project>

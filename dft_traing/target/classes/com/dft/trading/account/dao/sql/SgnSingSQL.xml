@@ -17,9 +17,8 @@
 
 	<!-- user 등록 쿼리-->
     <insert id="createUser" parameterType="map">
-    	INSERT INTO DFT_USER_INFO (USER_ID, USER_PWD, USER_EMAIL, USER_NM, USER_NNM, USER_DV, USER_STATE,
-                LST_UDT_DT)
-          VALUES(#{userId}, #{userPw}, #{userEmail}, #{userNm}, #{userNnm}, 'N', '01' ,#{lstUdtDt)     
-    
+    	INSERT INTO DFT_USER_INFO (USER_ID, USER_PWD, USER_EMAIL, USER_NM, USER_NNM, USER_DV, USER_STATE)
+          VALUES(#{userId}, #{userPw}, #{userEmail}, #{userNm}, #{userNnm}, 'N', '01')     
     </insert>
+    
 </mapper>
