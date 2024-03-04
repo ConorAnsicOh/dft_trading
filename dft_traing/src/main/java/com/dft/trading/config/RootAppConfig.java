@@ -56,7 +56,7 @@ public class RootAppConfig {
     }
     
     @Bean // UserInfoDMO 빈을 추가
-    public LogLognDMO lonLognDMO(SqlSessionFactory sqlSessionFactory) {
+    public LogLognDMO logLognDMO(SqlSessionFactory sqlSessionFactory) {
         LogLognDMC logLognDMC = new LogLognDMC();
         logLognDMC.setSqlSessionFactory(sqlSessionFactory);
         return logLognDMC;

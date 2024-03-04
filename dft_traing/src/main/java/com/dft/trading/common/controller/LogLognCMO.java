@@ -9,14 +9,14 @@ import org.springframework.stereotype.Repository;
 import com.dft.trading.account.io.LogLognIO;
 import com.dft.trading.account.service.LogLognBMO;
 
-@Component
+@Repository
 public class LogLognCMO {
 
 	@Autowired
 	private LogLognBMO logLognBMO;
 	
-	public List<LogLognIO> getUserInfoByUserId(String userId, String userPwd) {
+	public List<LogLognIO> getUserInfoByUserId(String userEmail, String userNm) {
 		
-		return logLognBMO.getUserInfoByUserId(userId, userPwd);
+		return logLognBMO.getUserInfoByUserId(userEmail, userNm);
 	}
 }

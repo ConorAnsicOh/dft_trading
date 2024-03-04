@@ -11,5 +11,5 @@ public interface LogLognDMO {
 
 	List<LogLognIO> getAllUserInfo();
 	
-	List<LogLognIO> getUserInfoByUserId(String userId, String userPwd);
+	List<LogLognIO> getUserInfoByUserId(String userEmail, String userNm);
 }

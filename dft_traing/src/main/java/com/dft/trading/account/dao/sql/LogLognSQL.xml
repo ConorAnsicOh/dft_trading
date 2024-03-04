@@ -17,7 +17,7 @@
 
     <!-- userId로 유저 정보를 조회하는 쿼리 -->
     <select id="getUserInfoByUserId" parameterType="String" resultMap="userInfoResultMap">
-        SELECT * FROM DFT_USER_INFO WHERE user_id = #{userId}
+        SELECT * FROM DFT_USER_INFO WHERE user_email = ${userEmail} AND user_nm = #{userNm}
     </select>
 
     <!-- 모든 유저 정보를 조회하는 쿼리 -->
