@@ -1,17 +1,16 @@
 package com.dft.trading.channel.controller;
 
-import java.util.List;
-
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.dft.trading.account.io.LogLognIO;
 import com.dft.trading.account.io.SgnSingIO;
-import com.dft.trading.common.controller.LogLognCMO;
 import com.dft.trading.common.controller.SgnSingCMO;
 
 
@@ -38,12 +37,12 @@ public class SingupController {
 	}
 	//중복체크
 	@RequestMapping(value = "/duplicateCheck", method = RequestMethod.GET)
-	public ModelAndView SgngSingDuplicateCheck(SgnSingIO sgnSingIO) {
-		String userId = sgnSingIO.getUserId();
-		List<LogLognIO> returnList = sgnSingCMO.SgngSingDuplicateCheck(userId);
+	public HashMap<String,String> SgngSingDuplicateCheck(@RequestParam("userId") String userId) {
+		String checkId = sgnSingCMO.SgngSingDuplicateCheck(userId);
+		System.out.println(checkId);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("userId", userId);
 		
-		System.out.println("userId"  + userId);
-		System.out.println("returnList"  + returnList);
-		return new ModelAndView("/Sgn/SgnSign1100");
+		return map;
 	}
 }

@@ -19,8 +19,8 @@ public class SgnSingDMC extends SqlSessionDaoSupport  implements SgnSingDMO {
 	}
 
 	@Override
-	public List<LogLognIO> selectOneList(String userId) {
-		return getSqlSession().selectList("com.dft.trading.account.dao.sql.LogLognSQL.findByUserId", userId);
+	public String selectOneList(String userId) {
+		return getSqlSession().selectOne("com.dft.trading.account.dao.sql.LogLognSQL.findByUserId", userId);
 		
 	}
 

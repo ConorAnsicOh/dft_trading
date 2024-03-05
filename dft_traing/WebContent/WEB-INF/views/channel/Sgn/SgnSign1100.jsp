@@ -150,14 +150,15 @@ function singUp(){
 //중복체크
 function DuplicateCheck(){
 	var userid = $("#userId").val();
-	console.log("userid::", userid);
     $.ajax({
         type: "get",
         url: "/duplicateCheck", // 서버의 컨트롤러 엔드포인트
-        data: singform.serialize(),
+        data: {
+        	userId : userid
+        },
         success: function(response) {
             // 요청이 성공했을 때 수행할 작업
-            alert("요청됨 ?");
+            alert("ggggg");
         },
         error: function(xhr, status, error) {
             // 요청이 실패했을 때 수행할 작업

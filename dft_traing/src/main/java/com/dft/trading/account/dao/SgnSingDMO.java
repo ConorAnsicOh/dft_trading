@@ -14,6 +14,6 @@ public interface SgnSingDMO {
 
 	void createUser(HashMap<String, Object> map);
 
-	List<LogLognIO> selectOneList(String userId);
+	String selectOneList(String userId);
 
 }

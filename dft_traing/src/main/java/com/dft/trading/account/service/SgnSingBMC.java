@@ -32,7 +32,7 @@ public class SgnSingBMC implements SgnSingBMO {
 	}
 
 	@Override
-	public List<LogLognIO> SgngSingDuplicateCheck(String userId) {
+	public String SgngSingDuplicateCheck(String userId) {
 		return sgnSignDMO.selectOneList(userId);
 	}
 	
