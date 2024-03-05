@@ -32,8 +32,8 @@ public class SgnSingBMC implements SgnSingBMO {
 	}
 
 	@Override
-	public String SgngSingDuplicateCheck(String userId) {
-		return sgnSignDMO.selectOneList(userId);
+	public void SgngSingDuplicateCheck(String userId) {
+		sgnSignDMO.selectOneList(userId);
 	}
 	
 

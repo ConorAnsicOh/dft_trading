@@ -151,7 +151,7 @@ function singUp(){
 function DuplicateCheck(){
 	var userid = $("#userId").val();
     $.ajax({
-        type: "get",
+        type: "post",
         url: "/duplicateCheck", // 서버의 컨트롤러 엔드포인트
         data: {
         	userId : userid

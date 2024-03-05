@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.dft.trading.account.io.SgnSingIO;
 import com.dft.trading.common.controller.SgnSingCMO;
@@ -36,10 +34,9 @@ public class SingupController {
 		return "/Log/LogLogn1100";
 	}
 	//중복체크
-	@RequestMapping(value = "/duplicateCheck", method = RequestMethod.GET)
+	@RequestMapping(value = "/duplicateCheck", method = RequestMethod.POST)
 	public HashMap<String,String> SgngSingDuplicateCheck(@RequestParam("userId") String userId) {
-		String checkId = sgnSingCMO.SgngSingDuplicateCheck(userId);
-		System.out.println(checkId);
+		sgnSingCMO.SgngSingDuplicateCheck(userId);
 		HashMap<String, String> map = new HashMap<>();
 		map.put("userId", userId);
 		

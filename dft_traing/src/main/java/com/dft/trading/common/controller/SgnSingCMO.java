@@ -12,13 +12,14 @@ import com.dft.trading.account.service.SgnSingBMO;
 public class SgnSingCMO {
 	@Autowired
 	private SgnSingBMO sgnSingBMO;
+	
 	public void singUp(SgnSingIO sgnSignIo){
 		
 		sgnSingBMO.singUp(sgnSignIo);
 		
 	}
-	public String SgngSingDuplicateCheck(String userId) {
+	public void SgngSingDuplicateCheck(String userId) {
 		
-		return sgnSingBMO.SgngSingDuplicateCheck(userId);
+		sgnSingBMO.SgngSingDuplicateCheck(userId);
 	}
 }
