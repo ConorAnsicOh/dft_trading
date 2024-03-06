@@ -14,8 +14,7 @@ public class SgnSingCMO {
 	private SgnSingBMO sgnSingBMO;
 	
 	public void singUp(SgnSingIO sgnSignIo){
-		
-		sgnSingBMO.singUp(sgnSignIo);
+		 sgnSingBMO.singUp(sgnSignIo);
 		
 	}
 	public String SgngSingDuplicateCheck(String userId) {

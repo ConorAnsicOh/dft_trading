@@ -2,16 +2,19 @@ package com.dft.trading.channel.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dft.trading.account.io.LogLognIO;
 import com.dft.trading.common.controller.LogLognCMO;
+import com.dft.trading.common.util.Sha256Util;
+
 
 
 @Controller
@@ -20,8 +23,21 @@ public class LoginController {
 	@Autowired
     private LogLognCMO logLognCMO;
 	
+	private Sha256Util sha256Util;
+	
 	@RequestMapping(value = "/Login", method = RequestMethod.GET)
-	public String logn() {
+	public String logn(HttpServletRequest request)throws Exception {
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("userNm", "");
+		session.setAttribute("loginCnt", 0);
+
+		String userNm = (String) session.getAttribute("userNm");
+		Integer loginCnt = (Integer) session.getAttribute("loginCnt");
+		
+		System.out.println("userNm 초기화 됨? : " + userNm);
+		System.out.println("loginCnt 초기화 됨? : " + loginCnt);
+		
 		return "/Log/LogLogn1100";
 	}
 	
@@ -35,20 +51,44 @@ public class LoginController {
 		return "/Log/LogLogn1102";
 	}
 
-	@RequestMapping(value = "/Login/FdidAjax", method = RequestMethod.POST)
-	public ModelAndView ReadLogLogn(@RequestBody LogLognIO logLognIO) {
-		String userEmail = logLognIO.getUserEmail();
-        String userNm = logLognIO.getUserNm();
-        
-        System.out.println("userEmail ::: " + userEmail);
-        System.out.println("userNm ::: " + userNm);
-        
-        List<LogLognIO> returnList = logLognCMO.getUserInfoByUserId(userEmail, userNm);
+	@ResponseBody
+	@RequestMapping(value = "/Login/FdidAjax", method = RequestMethod.POST, produces = "application/json")
+	public List<LogLognIO> ReadLogLognId(LogLognIO logLognIO) {
+	    // Controller logic here...
+	    String userEmail = logLognIO.getUserEmail();
+	    String userNm = logLognIO.getUserNm();
+	    
+	    List<LogLognIO> returnList = logLognCMO.SelectLogLognId(userEmail, userNm);
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("data", returnList);
-        modelAndView.setViewName("/Brd/BrdNews1100");
+	    return returnList;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/Login/FdpwdAjax", method = RequestMethod.POST, produces = "application/json")
+	public List<LogLognIO> ReadLogLognPwd(LogLognIO logLognIO) {
+	    String userId = logLognIO.getUserId();
+	    
+	    List<LogLognIO> returnList = logLognCMO.SelectLogLognPwd(userId);
+	    
+	    System.out.println("결과값 ::: " + returnList);
 
-        return modelAndView;
+	    return returnList;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/Login/LoginAjax", method = RequestMethod.POST, produces = "application/json")
+	public List<LogLognIO> ReadLogLognLogin(LogLognIO logLognIO, HttpServletRequest request) throws Exception {
+	    String userId = logLognIO.getUserId();
+	    String userPwd = logLognIO.getUserPwd();
+	    
+	    	List<LogLognIO> returnList = logLognCMO.SelectLogLognNm(userId, userPwd, request);
+	    	return returnList;
+	    
+	}
+	
+	@RequestMapping(value = "/Login/moveAjax", method = RequestMethod.GET)
+	public String ReadLogLognMove() {
+
+        return "/Brd/BrdNews1100";
 	}
 }

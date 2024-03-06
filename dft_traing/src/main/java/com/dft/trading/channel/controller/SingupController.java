@@ -5,11 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.dft.trading.account.io.SgnSingIO;
 import com.dft.trading.common.controller.SgnSingCMO;
-
 
 @Controller
 public class SingupController {
@@ -27,12 +25,12 @@ public class SingupController {
 		return "/Sgn/SgnSign1100";
 	}
 	//회원가입 처리
+	@ResponseBody
 	@RequestMapping(value = "/SgnSingUp", method = RequestMethod.POST)
-	public ModelAndView SgngSing(SgnSingIO sgnSingIO) {
+	public String SgngSing(SgnSingIO sgnSingIO) {
+		
 		sgnSingCMO.singUp(sgnSingIO);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/Log/LogLogn1100");
-		return mv;
+		return "/Log/LogLogn1100";
 	}
 	//중복체크
 	@ResponseBody

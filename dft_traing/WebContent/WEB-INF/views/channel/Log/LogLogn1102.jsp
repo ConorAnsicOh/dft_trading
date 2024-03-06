@@ -155,15 +155,21 @@
 					userEmail : userEmail,
 					userNm : userNm
 			}
-			
-			alert("Email : " + userEmail + "\n Nm : " + userNm);
 
 			$.ajax({
 	            url: '/Login/FdidAjax',
 	            type: 'POST',
 	            data: param,
+	            headers: {
+	                'Accept': 'application/json'
+	            },
 	            success: function(data) {
-	                console.log(data);
+	            	var userData = data[0];
+	            	console.log("userData ::: " + userData);
+	            	var userId = userData.userId
+	            	console.log("userId ::: " + userId);
+	            	
+	            	alert("회원님의 ID는" + "\n" + userId + "입니다.");
 	            },
 	            error: function(xhr, status, error) {
 	                console.error('Error:', error);

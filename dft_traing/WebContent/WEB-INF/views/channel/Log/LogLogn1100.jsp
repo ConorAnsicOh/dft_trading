@@ -4,14 +4,7 @@
 <html>
 <head><title>
 	회원 회원로그인
-</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="shortcut icon" href="https://rs.nxfs.nexon.com/common/images/nexon.ico"><link rel="stylesheet" type="text/css" href="https://rs.nxfs.nexon.com/nxlogin/css/login.css">
-	<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-G8E41RL4PQ&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" src="https://ssl.nexon.com/s1/livewebjs/GnxVisitorTracking.min.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-M6GQB2M&amp;gtm_auth=opxbH85cveE6aAHmANIUHQ&amp;gtm_preview=env-2&amp;gtm_cookies_win=x"></script><script>(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl + '&gtm_auth=opxbH85cveE6aAHmANIUHQ&gtm_preview=env-2&gtm_cookies_win=x'; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', 'GTM-M6GQB2M');</script>
-
-	<script type="text/javascript" src="https://ssl.nexon.com/s1/global/ngb_head.js" charset="euc-kr"></script><script src="https://ssl.nexon.com/s1/global/ngb_headstart.js?v=1707197085785" type="text/javascript"></script><script src="https://platform.nexon.com/ajax/npf_auth_c.js" type="text/javascript"></script><script charset="euc-kr" src="https://logins.nexon.com/login/page/ngb_login.aspx" type="text/javascript"></script><script src="https://ssl.nexon.com/s1/global/ngb_RSAHash.js" type="text/javascript"></script><script charset="euc-kr" src="https://logins.nexon.com/scripts/captchalogin" type="text/javascript"></script><script charset="euc-kr" src="https://ssl.nexon.com/s1/global/ngb_pcbanglogin.js?v=20181015" type="text/javascript"></script><script charset="euc-kr" src="https://ssl.nexon.com/s1/global/ngb_util.js?v=20190903" type="text/javascript"></script><script charset="euc-kr" src="https://ssl.nexon.com/s1/member/nxmember.js?v=20200111" type="text/javascript"></script><script charset="euc-kr" src="https://ssl.nexon.com/s1/External/makePCIDCookie.js" type="text/javascript"></script><script src="https://ssl.nexon.com/s1/da/a2s.js" type="text/javascript"></script>
-	<script type="text/javascript" src="https://ssl.nexon.com/s1/p2/jquery.min.js" charset="utf-8"></script>
-	<script type="text/javascript" src="https://ssl.nexon.com/s1/p2/json2.min.js" charset="utf-8"></script>
-	<script type="text/javascript" src="https://ssl.nexon.com/s1/p2/ps.min.js" charset="utf-8" data-name="PS" data-ngm="false" data-nxlogin="true" data-miniprofile="false"></script><script type="text/javascript" charset="utf-8" src="https://ssl.nexon.com/s1/p2/util.min.js" data-name="PSUtil"></script>
-	
+</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="shortcut icon" href="https://rs.nxfs.nexon.com/common/images/nexon.ico"><link rel="stylesheet" type="text/css" href="https://rs.nxfs.nexon.com/nxlogin/css/login.css">	
 </head>
 <body>
 	<div class="skipNav"><a href="#contents">skip to contents</a></div>
@@ -35,9 +28,9 @@
 			<p class="loginMsg">회원 ID 혹은 비밀번호를 잘못 입력하셨거나 등록되지 않은 회원 ID입니다.</p>
 			<fieldset>
 				<legend class="acchidden">회원ID 로그인</legend>
-				<div class="id"><input type="text" class="input01" id="txtNexonID" placeholder="회원ID"></div>
+				<div class="id"><input type="text" class="input01" id="userId" placeholder="회원ID"></div>
 				<p class="inputMsg nexonid">회원ID를 입력해주세요.</p>
-				<div class="pass"><input type="password" class="input01" id="txtPWD" placeholder="비밀번호"></div>
+				<div class="pass"><input type="password" class="input01" id="userPwd" placeholder="비밀번호"></div>
 				<p class="inputMsg password">비밀번호를 입력해주세요.</p>
 				<div class="btLogin"><button type="button" class="button01">회원ID 로그인</button></div>
 			</fieldset>
@@ -73,8 +66,9 @@
 
 
 <div><form id="formLogin" name="formLogin" method="post"></form></div></body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- 카카오 스크립트 -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<!-- <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> -->
 <!-- <script>
 	//카카오로그인
 	function kakaoLogin() {
@@ -113,32 +107,62 @@
 <script type="text/javascript">
 	$(".button01").click(function(){
 		if (validate()) {
-			alert("로그인이 완료되었습니다.");
+			var userId = $("#userId").val();
+			var userPwd = $("#userPwd").val();
+			var param = {
+					userId : userId,
+					userPwd : userPwd
+			}
+	
+			$.ajax({
+	            url: '/Login/LoginAjax',
+	            type: 'POST',
+	            data: param,
+	            headers: {
+	                'Accept': 'application/json'
+	            },
+	            success: function(data) {
+	            	alert("로그인이 완료되었습니다.");
+	            	$.ajax({
+	    	            url: '/Brd/main',
+	    	            type: 'GET',
+	    	            success: function(data) {
+	    	            },
+	    	            error: function(xhr, status, error) {
+	    	            }
+	    	        });
+	            },
+	            error: function(xhr, status, error) {
+	            	var responseText = xhr.responseText
+	            	var errorMessage = responseText.match(/<p><b>메시지<\/b>(.*?)<\/p>/)[1].replace(/Request processing failed; nested exception is java.lang.Exception:\s*/, '');
+	                alert(errorMessage);
+	            }
+	        });
 		};
 	});
 
 	function validate(){
-		let nexonId = $("#txtNexonID").val();
-		let nexonPw = $("#txtPWD").val();
+		let userId = $("#userId").val();
+		/* let nexonPw = $("#txtPWD").val();
 		let idChk = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 		let pwChk = /^(?=.*[A-Z])(?=.*[!@#$%^&*?_])/;
 		let pwNum	= nexonPw.search(/[0-9]/g);
-		let pwEng	= nexonPw.search(/[a-z]/ig);
+		let pwEng	= nexonPw.search(/[a-z]/ig); */
 		
-		if(false === idChk.test(nexonId)){
+		/* if(false === idChk.test(nexonId)){
 			alert("ID가 이메일 형식에 부합하지 않습니다.");
 			return false;
-		}
+		}*/
 		
-		if(nexonPw.length < 8){
-			alert("PW는 8자리 이상 입력해주세요.");
+		if(userId.length < 2){
+			alert("아이디는 2자리 이상 입력해주세요.");
 			return false;
 		}
 		
-		if(false === pwChk.test(nexonPw)){
+		/*if(false === pwChk.test(nexonPw)){
 			alert("PW는 영어대문자와 특수문자를 포함하여야 합니다.");
 			return false;
-		}
+		} */
 		
 		return true;
 	}

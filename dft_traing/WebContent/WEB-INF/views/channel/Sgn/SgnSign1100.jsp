@@ -131,14 +131,14 @@ function singUp(){
 		return false;
 	}
 	var singform = $('#singform');
-	 
 	    $.ajax({
 	        type: "post",
 	        url: "/SgnSingUp", // 서버의 컨트롤러 엔드포인트
+	        dataType:"text",
 	        data: singform.serialize(), // 폼 데이터 직렬화하여 전송
 	        success: function(response) {
-	            // 요청이 성공했을 때 수행할 작업
-	            alert("회원가입 선공");
+	        	alert("회원가입 성공했습니다!!!!");
+	        	window.location.href = "/Login";
 	        },
 	        error: function(xhr, status, error) {
 	            // 요청이 실패했을 때 수행할 작업

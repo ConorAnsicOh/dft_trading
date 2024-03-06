@@ -20,15 +20,17 @@ public class SgnSingBMC implements SgnSingBMO {
 	@Override
 	public void singUp(SgnSingIO sgnSignIo) {
 		String currentPassword = sgnSignIo.getUserPw();
-		String encryptionPassword = currentPassword;
+		String encryptionPassword = sgnSignIo.setUserPw(sha256Util.sha256Encode(currentPassword, sha256Util.getSalt()));
 		
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("userId", sgnSignIo.getUserId());
-		map.put("userPw",sgnSignIo.setUserPw(sha256Util.sha256Encode(encryptionPassword, sha256Util.getSalt())));
+		map.put("userPw", encryptionPassword);
 		map.put("userEmail", sgnSignIo.getUserEmail());
 		map.put("userNm", sgnSignIo.getUserNm());
 		map.put("userNnm", sgnSignIo.getUserNnm());
+		
 		sgnSingDMO.createUser(map);
+		
 	}
 
 	@Override

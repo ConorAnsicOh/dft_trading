@@ -4,7 +4,7 @@
 
 <mapper namespace="com.dft.trading.account.dao.sql.LogLognSQL">
 
-    <resultMap id="userInfoResultMap" type="com.dft.trading.channel.io.UserInfoIO">
+    <resultMap id="userInfoResultMap" type="com.dft.trading.account.io.LogLognIO">
         <id property="userId" column="user_id"/>
         <result property="userPwd" column="user_pwd"/>
         <result property="userEmail" column="user_email"/>
@@ -15,14 +15,16 @@
         <result property="lstUdtDt" column="lst_udt_dt"/>
     </resultMap>
 
-    <!-- userId로 유저 정보를 조회하는 쿼리 -->
-    <select id="getUserInfoByUserId" parameterType="String" resultMap="userInfoResultMap">
-        SELECT * FROM DFT_USER_INFO WHERE user_email = ${userEmail} AND user_nm = #{userNm}
+    <select id="SelectLogLognId" parameterType="java.util.Map" resultMap="userInfoResultMap">
+        SELECT user_id FROM DFT_USER_INFO WHERE user_email = #{userEmail} AND user_nm = #{userNm}
     </select>
-
-    <!-- 모든 유저 정보를 조회하는 쿼리 -->
-    <select id="getAllUserInfo" resultMap="userInfoResultMap">
-        SELECT * FROM DFT_USER_INFO
+    
+    <select id="SelectLogLognPwd" parameterType="java.util.Map" resultMap="userInfoResultMap">
+        SELECT user_pwd FROM DFT_USER_INFO WHERE user_id = #{userId}
+    </select>
+    
+    <select id="SelectLogLognNm" parameterType="java.util.Map" resultMap="userInfoResultMap">
+        SELECT user_nm FROM DFT_USER_INFO WHERE user_id = #{userId} AND user_pwd = #{userPwd}
     </select>
     
 </mapper>
