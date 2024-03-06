@@ -8,8 +8,10 @@ import com.dft.trading.account.io.LogLognIO;
 
 @Repository
 public interface LogLognDMO {
-
-	List<LogLognIO> getAllUserInfo();
 	
-	List<LogLognIO> getUserInfoByUserId(String userEmail, String userNm);
+	List<LogLognIO> SelectLogLognId(String userEmail, String userNm);
+	
+	List<LogLognIO> SelectLogLognPwd(String userId);
+	
+	List<LogLognIO> SelectLogLognNm(String userId, String userPwd);
 }

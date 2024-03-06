@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BoardController {
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String main() {
+	@RequestMapping(value = "/Brd/main", method = RequestMethod.GET)
+	public String brdMain() {
 
 		return "/Brd/BrdNews1100";
 	}
