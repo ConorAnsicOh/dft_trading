@@ -82,10 +82,4 @@ public class LoginController {
 	    
 	    return returnList;
 	}
-	
-	@RequestMapping(value = "/Login/moveAjax", method = RequestMethod.GET)
-	public String ReadLogLognMove() {
-
-        return "/Brd/BrdNews1100";
-	}
 }

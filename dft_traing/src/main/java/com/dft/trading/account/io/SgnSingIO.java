@@ -10,6 +10,7 @@ public class SgnSingIO {
 	private String userEmail;
 	private String userNm;
 	private String userNnm;
+	private String userState;
 	private String userDv;
 	private Date   lstUdtDt;
 	public String getUserId() {
@@ -21,8 +22,8 @@ public class SgnSingIO {
 	public String getUserPw() {
 		return userPw;
 	}
-	public void setUserPw(String userPw) {
-		this.userPw = userPw;
+	public String setUserPw(String userPw) {
+		return this.userPw = userPw;
 	}
 	public String getUserEmail() {
 		return userEmail;
@@ -42,12 +43,20 @@ public class SgnSingIO {
 	public void setUserNnm(String userNnm) {
 		this.userNnm = userNnm;
 	}
+	
+	public String getUserState() {
+		return userState;
+	}
+	public void setUserState(String userState) {
+		this.userState = userState;
+	}
 	public String getUserDv() {
 		return userDv;
 	}
 	public void setUserDv(String userDv) {
 		this.userDv = userDv;
 	}
+	
 	public Date getLstUdtDt() {
 		return lstUdtDt;
 	}

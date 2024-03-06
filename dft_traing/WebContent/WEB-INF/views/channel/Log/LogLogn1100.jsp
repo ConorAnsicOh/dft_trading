@@ -123,18 +123,11 @@
 	            },
 	            success: function(data) {
 	            	alert("로그인이 완료되었습니다.");
-	            	$.ajax({
-	    	            url: '/Brd/main',
-	    	            type: 'GET',
-	    	            success: function(data) {
-	    	            },
-	    	            error: function(xhr, status, error) {
-	    	            }
-	    	        });
+	            	window.open("/Brd/main");
 	            },
 	            error: function(xhr, status, error) {
 	            	var responseText = xhr.responseText
-	            	var errorMessage = responseText.match(/<p><b>메시지<\/b>(.*?)<\/p>/)[1].replace(/Request processing failed; nested exception is java.lang.Exception:\s*/, '');
+	            	var errorMessage = responseText.match(/<p><b>메시지<\/b>(.*?)<\/p>/)[1].replace(/Request processing failed; nested exception is java.lang.Exception: \s*/, '');
 	                alert(errorMessage);
 	            }
 	        });

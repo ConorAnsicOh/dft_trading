@@ -8,8 +8,8 @@ public class BoardController {
 
 	@RequestMapping(value = "/Brd/main", method = RequestMethod.GET)
 	public String brdMain() {
-
-		return "/Brd/BrdNews1100";
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@");
+		return "Brd/BrdNews1100";
 	}
 	
 	

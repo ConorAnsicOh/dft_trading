@@ -164,12 +164,14 @@
 	                'Accept': 'application/json'
 	            },
 	            success: function(data) {
-	            	var userData = data[0];
-	            	console.log("userData ::: " + userData);
-	            	var userId = userData.userId
-	            	console.log("userId ::: " + userId);
-	            	
-	            	alert("회원님의 ID는" + "\n" + userId + "입니다.");
+	            	if(data == null || data == ""){
+	            		alert("해당 정보가 조회되지 않습니다.");
+	            	}else{
+		            	var userData = data[0];
+		            	var userId = userData.userId
+		            	
+		            	alert("회원님의 ID는" + "\n" + userId + "입니다.");
+	            	}
 	            },
 	            error: function(xhr, status, error) {
 	                console.error('Error:', error);
