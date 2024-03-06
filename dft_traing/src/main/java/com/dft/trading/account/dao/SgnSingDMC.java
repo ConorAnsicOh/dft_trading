@@ -8,6 +8,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.dft.trading.account.io.LogLognIO;
+import com.dft.trading.account.io.SgnSingIO;
 
 @Repository
 public class SgnSingDMC extends SqlSessionDaoSupport  implements SgnSingDMO {
@@ -19,9 +20,8 @@ public class SgnSingDMC extends SqlSessionDaoSupport  implements SgnSingDMO {
 	}
 
 	@Override
-	public void selectOneList(String userId) {
-		getSqlSession().selectOne("com.dft.trading.account.dao.sql.LogLognSQL.findByUserId", userId);
-		
+	public String selectOneList(String userId) {
+		return getSqlSession().selectOne("com.dft.trading.account.dao.sql.SgnSingSQL.findByUserId", userId);
 	}
 
 }

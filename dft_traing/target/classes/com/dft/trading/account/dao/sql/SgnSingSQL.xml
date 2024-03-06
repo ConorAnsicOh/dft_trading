@@ -21,4 +21,7 @@
           VALUES(#{userId}, #{userPw}, #{userEmail}, #{userNm}, #{userNnm}, 'N', '01')     
     </insert>
     
+      <select id="findByUserId" resultType="String">
+        SELECT * FROM DFT_USER_INFO WHERE USER_ID = #{userId} 
+    </select>
 </mapper>

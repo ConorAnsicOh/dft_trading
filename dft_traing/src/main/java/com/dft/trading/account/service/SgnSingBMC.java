@@ -14,7 +14,7 @@ import com.dft.trading.common.util.Sha256Util;
 @Service
 public class SgnSingBMC implements SgnSingBMO {
 	@Autowired
-	private SgnSingDMO sgnSignDMO;
+	private SgnSingDMO sgnSingDMO;
 	private Sha256Util sha256Util;
 	
 	@Override
@@ -28,12 +28,12 @@ public class SgnSingBMC implements SgnSingBMO {
 		map.put("userEmail", sgnSignIo.getUserEmail());
 		map.put("userNm", sgnSignIo.getUserNm());
 		map.put("userNnm", sgnSignIo.getUserNnm());
-		sgnSignDMO.createUser(map);
+		sgnSingDMO.createUser(map);
 	}
 
 	@Override
-	public void SgngSingDuplicateCheck(String userId) {
-		sgnSignDMO.selectOneList(userId);
+	public String SgngSingDuplicateCheck(String userId) {
+		return sgnSingDMO.selectOneList(userId);
 	}
 	
 

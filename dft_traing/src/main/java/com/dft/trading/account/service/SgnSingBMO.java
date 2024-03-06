@@ -8,6 +8,8 @@ public interface SgnSingBMO {
 
 	void singUp(SgnSingIO sgnSignIo);
 
-	void SgngSingDuplicateCheck(String userId);
+	String SgngSingDuplicateCheck(String userId);
+
+
 
 }

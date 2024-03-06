@@ -18,8 +18,8 @@ public class SgnSingCMO {
 		sgnSingBMO.singUp(sgnSignIo);
 		
 	}
-	public void SgngSingDuplicateCheck(String userId) {
+	public String SgngSingDuplicateCheck(String userId) {
 		
-		sgnSingBMO.SgngSingDuplicateCheck(userId);
+		return sgnSingBMO.SgngSingDuplicateCheck(userId);
 	}
 }
