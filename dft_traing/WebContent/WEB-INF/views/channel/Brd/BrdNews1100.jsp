@@ -94,12 +94,15 @@ $(document).ready(function() {
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<%
+    String userNm = (String) session.getAttribute("userNm");
+%>
+
 <div class="container-doc">
 <header class="doc-header">
     <!-- head_top -->
     
     <div class="head_top">
-    <p>이선기님, 반갑습니다!</p>
         <h1 class="doc-title">
             <a href="https://www.daum.net/" class="link_daum" data-tiara-layer="gnb default logo">
                 <img src="//t1.daumcdn.net/media/common/newsview_2021/pc/rtn/logo_daum.png" width="44" height="18" class="logo_daum" alt="Daum">
@@ -107,10 +110,18 @@ $(document).ready(function() {
             <a href="https://news.daum.net/" id="kakaoServiceLogo" data-tiara-layer="GNB service news">
                 <span class="ir_wa">뉴스</span>
             </a>
-            <h3>
-				<a href="/Login" style="margin-right:20px;">로그인</a>
-				<a href="/SingUp">회원가입</a>
-      	 	</h3>
+		<c:choose>
+		    <c:when test="${userNm != null}">
+		        <h3><%= userNm %>님 반갑습니다!</h3>
+		        <h3> <a href="/logout">로그아웃</a></h3>
+		    </c:when>
+		    <c:otherwise>
+		        <h3>
+		            <a href="/Login" style="margin-right:20px;">로그인</a>
+		            <a href="/SingUp">회원가입</a>
+		        </h3>
+		    </c:otherwise>
+		</c:choose>
         </h1>
         <strong class="screen_out">관련 서비스</strong>
 <div id="wrapMinidaum"></div>

@@ -90,7 +90,7 @@
 			}
 	
 			$.ajax({
-	            url: '/Login/FdpwdAjax',
+	            url: '/findPwdAjax',
 	            type: 'POST',
 	            data: param,
 	            headers: {
