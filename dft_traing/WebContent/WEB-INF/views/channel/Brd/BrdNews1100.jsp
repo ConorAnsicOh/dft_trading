@@ -117,7 +117,7 @@ $(document).ready(function() {
 		    </c:when>
 		    <c:otherwise>
 		        <h3>
-		            <a href="/Login" style="margin-right:20px;">로그인</a>
+		            <a href="/login" style="margin-right:20px;">로그인</a>
 		            <a href="/SingUp">회원가입</a>
 		        </h3>
 		    </c:otherwise>
