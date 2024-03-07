@@ -1,60 +1,72 @@
 package com.dft.trading.account.io;
 
-import java.util.Date;
+import java.sql.Date;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+//@Data
+//@Getter @Setter
 public class BrdNewsIO {
+	
+	private String newsId;
+	private String newsLink;
+	private String newsTitle;
+	private String newsImage;
+	private String newsDetail;
+	private String newsCom;
+	private Date   newsTime;
+	private int    newsCount;
+	
+	
+	public int getNewsCount() {
+		return newsCount;
+	}
+	public void setNewsCount(int newsCount) {
+		this.newsCount = newsCount;
+	}
 
-	private String NEWS_ID;
-	private String NEWS_LINK;
-	private String NEWS_TITLE;
-	private String NEWS_IMAGE;
-	private String NEWS_DETAIL;
-	private String NEWS_COM;
-	private Date   NEWS_TIME;
-	
-	
-	public String getNEWS_ID() {
-		return NEWS_ID;
+	public String getNewsId() {
+		return newsId;
 	}
-	public void setNEWS_ID(String nEWS_ID) {
-		NEWS_ID = nEWS_ID;
+	public void setNewsId(String newsId) {
+		this.newsId = newsId;
 	}
-	public String getNEWS_LINK() {
-		return NEWS_LINK;
+	public String getNewsLink() {
+		return newsLink;
 	}
-	public void setNEWS_LINK(String nEWS_LINK) {
-		NEWS_LINK = nEWS_LINK;
+	public void setNewsLink(String newsLink) {
+		this.newsLink = newsLink;
 	}
-	public String getNEWS_TITLE() {
-		return NEWS_TITLE;
+	public String getNewsTitle() {
+		return newsTitle;
 	}
-	public void setNEWS_TITLE(String nEWS_TITLE) {
-		NEWS_TITLE = nEWS_TITLE;
+	public void setNewsTitle(String newsTitle) {
+		this.newsTitle = newsTitle;
 	}
-	public String getNEWS_IMAGE() {
-		return NEWS_IMAGE;
+	public String getNewsImage() {
+		return newsImage;
 	}
-	public void setNEWS_IMAGE(String nEWS_IMAGE) {
-		NEWS_IMAGE = nEWS_IMAGE;
+	public void setNewsImage(String newsImage) {
+		this.newsImage = newsImage;
 	}
-	public String getNEWS_DETAIL() {
-		return NEWS_DETAIL;
+	public String getNewsDetail() {
+		return newsDetail;
 	}
-	public void setNEWS_DETAIL(String nEWS_DETAIL) {
-		NEWS_DETAIL = nEWS_DETAIL;
+	public void setNewsDetail(String newsDetail) {
+		this.newsDetail = newsDetail;
 	}
-	public String getNEWS_COM() {
-		return NEWS_COM;
+	public String getNewsCom() {
+		return newsCom;
 	}
-	public void setNEWS_COM(String nEWS_COM) {
-		NEWS_COM = nEWS_COM;
+	public void setNewsCom(String newsCom) {
+		this.newsCom = newsCom;
 	}
-	public Date getNEWS_TIME() {
-		return NEWS_TIME;
+	public Date getNewsTime() {
+		return newsTime;
 	}
-	public void setNEWS_TIME(Date nEWS_TIME) {
-		NEWS_TIME = nEWS_TIME;
+	public void setNewsTime(Date newsTime) {
+		this.newsTime = newsTime;
 	}
-	
-	
 }

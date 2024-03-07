@@ -38,6 +38,22 @@ public class LoginController {
 		return "/Log/LogLogn1100";
 	}
 	
+	@RequestMapping(value = "/Login/Logout", method = RequestMethod.GET)
+	public String logLogo(HttpServletRequest request)throws Exception {
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("userNm", "");
+		session.setAttribute("loginCnt", 0);
+
+		String userNm = (String) session.getAttribute("userNm");
+		Integer loginCnt = (Integer) session.getAttribute("loginCnt");
+		
+		System.out.println("userNm 초기화 됨? : " + userNm);
+		System.out.println("loginCnt 초기화 됨? : " + loginCnt);
+		
+		return "/Brd/BrdNews1100";
+	}
+	
 	@RequestMapping(value = "/Login/Fdpw", method = RequestMethod.GET)
 	public String fdpw() {
 		return "/Log/LogLogn1101";

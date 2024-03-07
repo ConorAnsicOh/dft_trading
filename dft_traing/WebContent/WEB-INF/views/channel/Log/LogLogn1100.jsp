@@ -123,7 +123,7 @@
 	            },
 	            success: function(data) {
 	            	alert("로그인이 완료되었습니다.");
-	            	window.open("/Brd/main");
+	            	window.open("/");
 	            },
 	            error: function(xhr, status, error) {
 	            	var responseText = xhr.responseText
