@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dft.trading.account.dao.LogLognDMO;
+import com.dft.trading.account.dao.SgnSingDMO;
 import com.dft.trading.account.io.LogLognIO;
+import com.dft.trading.account.io.SgnSingIO;
+import com.dft.trading.common.util.Sha256Util;
 
 
 @Service
@@ -17,7 +20,9 @@ public class LogLognBMC implements LogLognBMO {
 	
 	@Autowired
 	private LogLognDMO logLognDMO;	
-
+	@Autowired
+	private SgnSingDMO sgnSingDMO;
+	private Sha256Util sha256Util;
 	@Override
 	public List<LogLognIO> SelectLogLognId(String userEmail, String userNm) {
 		return logLognDMO.SelectLogLognId(userEmail, userNm);
@@ -29,16 +34,19 @@ public class LogLognBMC implements LogLognBMO {
 	}
 	
 	@Override
-	public List<LogLognIO> SelectLogLognNm(String userId, String userPwd, HttpServletRequest request) throws Exception {
+	public List<LogLognIO> SelectLogLognNm(String userId, String userPwd,HttpServletRequest request) throws Exception {
+		SgnSingIO sgnSignIo = new SgnSingIO();
+		LogLognIO logLognIO = new LogLognIO();
+		String salt = sgnSingDMO.readSalt(userId);
+		String encryptionPassword = new Sha256Util().sha256Encode(logLognIO.getUserPwd(), salt);
+		System.out.println("salt:::" + salt);
+		System.out.println("encryptionPassword:::" + encryptionPassword);
 		try {
-			List<LogLognIO> returnList = logLognDMO.SelectLogLognNm(userId, userPwd);
-			
+			List<LogLognIO> returnList = logLognDMO.SelectLogLognNm(userId, encryptionPassword);
 			String userNm = "";
 			if (!returnList.isEmpty()) {
 	            userNm = returnList.get(0).getUserNm();
-	            
 				System.out.println("userNm ::: " + userNm);
-				
 				HttpSession session = request.getSession();
 				
 				session.setAttribute("userNm", userNm);

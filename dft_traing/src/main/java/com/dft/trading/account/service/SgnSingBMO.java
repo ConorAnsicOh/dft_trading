@@ -10,6 +10,8 @@ public interface SgnSingBMO {
 
 	String SgngSingDuplicateCheck(String userId);
 
+	String readSalt(String userId);
+
 
 
 }

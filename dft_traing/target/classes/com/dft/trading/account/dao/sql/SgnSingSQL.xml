@@ -12,16 +12,21 @@
         <result property="userNnm" column="USER_NNM"/>
         <result property="userState" column="USER_STATE"/>
         <result property="userDv" column="USER_DV"/>
+        <result property="salt" column="salt"/>
         <result property="lstUdtDt" column="LST_UDT_DT"/>
     </resultMap>
 
 	<!-- user 등록 쿼리-->
     <insert id="createUser" parameterType="map">
-    	INSERT INTO DFT_USER_INFO (USER_ID, USER_PWD, USER_EMAIL, USER_NM, USER_NNM, USER_DV, USER_STATE)
-          VALUES(#{userId}, #{userPw}, #{userEmail}, #{userNm}, #{userNnm}, 'N', '01')     
+    	INSERT INTO DFT_USER_INFO (USER_ID, USER_PWD, USER_EMAIL, USER_NM, USER_NNM, USER_DV, USER_STATE,salt)
+          VALUES(#{userId}, #{userPw}, #{userEmail}, #{userNm}, #{userNnm}, 'N', '01',#{salt})     
     </insert>
     
       <select id="findByUserId" resultType="String">
         SELECT * FROM DFT_USER_INFO WHERE USER_ID = #{userId} 
+    </select>
+    
+      <select id="readSalt" resultType="String">
+        SELECT salt FROM DFT_USER_INFO WHERE USER_ID = #{userId} 
     </select>
 </mapper>

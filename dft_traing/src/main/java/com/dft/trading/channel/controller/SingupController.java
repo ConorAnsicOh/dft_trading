@@ -27,16 +27,17 @@ public class SingupController {
 	//회원가입 처리
 	@ResponseBody
 	@RequestMapping(value = "/SgnSingUp", method = RequestMethod.POST)
-	public String SgngSing(SgnSingIO sgnSingIO) {
-		
+	public String SgngSing(SgnSingIO sgnSingIO, String userId) {
 		sgnSingCMO.singUp(sgnSingIO);
+		
 		return "/Log/LogLogn1100";
 	}
 	//중복체크
 	@ResponseBody
 	@RequestMapping(value = "/duplicateCheck", method = RequestMethod.POST)
 	public String SgngSingDuplicateCheck(String userId) {
-		String result  = sgnSingCMO.SgngSingDuplicateCheck(userId);
+		String result ="";  
+		result= sgnSingCMO.SgngSingDuplicateCheck(userId);
 		
 		return result;
 	}

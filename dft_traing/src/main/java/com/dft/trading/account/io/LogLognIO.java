@@ -11,6 +11,7 @@ public class LogLognIO {
 	private String userNnm;
 	private String userState;
 	private String userDv;
+	private String salt;
 	private Date lstUdtDt;
 	public String getUserId() {
 		return userId;
@@ -21,8 +22,8 @@ public class LogLognIO {
 	public String getUserPwd() {
 		return userPwd;
 	}
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
+	public String setUserPwd(String userPwd) {
+		return this.userPwd = userPwd;
 	}
 	public String getUserEmail() {
 		return userEmail;
@@ -54,6 +55,13 @@ public class LogLognIO {
 	public void setUserDv(String userDv) {
 		this.userDv = userDv;
 	}
+	
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 	public Date getLstUdtDt() {
 		return lstUdtDt;
 	}
@@ -63,9 +71,9 @@ public class LogLognIO {
 	@Override
 	public String toString() {
 		return "LogLognIO [userId=" + userId + ", userPwd=" + userPwd + ", userEmail=" + userEmail + ", userNm="
-				+ userNm + ", userNnm=" + userNnm + ", userState=" + userState + ", userDv=" + userDv + ", lstUdtDt="
-				+ lstUdtDt + "]";
+				+ userNm + ", userNnm=" + userNnm + ", userState=" + userState + ", userDv=" + userDv + ", salt=" + salt
+				+ ", lstUdtDt=" + lstUdtDt + "]";
 	}
-	
+
 	
 }

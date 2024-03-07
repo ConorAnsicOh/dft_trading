@@ -21,6 +21,7 @@ public class SgnSingBMC implements SgnSingBMO {
 	public void singUp(SgnSingIO sgnSignIo) {
 		String currentPassword = sgnSignIo.getUserPw();
 		String encryptionPassword = sgnSignIo.setUserPw(sha256Util.sha256Encode(currentPassword, sha256Util.getSalt()));
+		String salt = sha256Util.getSalt();
 		
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("userId", sgnSignIo.getUserId());
@@ -28,6 +29,7 @@ public class SgnSingBMC implements SgnSingBMO {
 		map.put("userEmail", sgnSignIo.getUserEmail());
 		map.put("userNm", sgnSignIo.getUserNm());
 		map.put("userNnm", sgnSignIo.getUserNnm());
+		map.put("salt", salt);
 		
 		sgnSingDMO.createUser(map);
 		
@@ -36,6 +38,11 @@ public class SgnSingBMC implements SgnSingBMO {
 	@Override
 	public String SgngSingDuplicateCheck(String userId) {
 		return sgnSingDMO.selectOneList(userId);
+	}
+
+	@Override
+	public String readSalt(String userId) {
+		return sgnSingDMO.readSalt(userId);
 	}
 	
 

@@ -16,5 +16,7 @@ public interface SgnSingDMO {
 
 	String selectOneList(String userId);
 
+	String readSalt(String userId);
+
 
 }

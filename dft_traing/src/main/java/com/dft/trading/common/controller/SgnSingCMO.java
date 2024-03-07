@@ -21,4 +21,8 @@ public class SgnSingCMO {
 		
 		return sgnSingBMO.SgngSingDuplicateCheck(userId);
 	}
+		public String readSalt(String userId) {
+		  return sgnSingBMO.readSalt(userId); 
+	}
+	
 }

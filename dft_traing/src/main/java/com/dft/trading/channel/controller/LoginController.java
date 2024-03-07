@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dft.trading.account.io.LogLognIO;
+import com.dft.trading.account.io.SgnSingIO;
 import com.dft.trading.common.controller.LogLognCMO;
-import com.dft.trading.common.util.Sha256Util;
+import com.dft.trading.common.controller.SgnSingCMO;
 
 
 
@@ -22,13 +23,13 @@ public class LoginController {
 	
 	@Autowired
     private LogLognCMO logLognCMO;
-	
-	private Sha256Util sha256Util;
+	@Autowired
+	private SgnSingCMO sgnSingCMO;
 	
 	@RequestMapping(value = "/Login", method = RequestMethod.GET)
 	public String logn(HttpServletRequest request)throws Exception {
 		HttpSession session = request.getSession();
-		
+		 
 		session.setAttribute("userNm", "");
 		session.setAttribute("loginCnt", 0);
 
@@ -77,12 +78,12 @@ public class LoginController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/Login/LoginAjax", method = RequestMethod.POST, produces = "application/json")
-	public List<LogLognIO> ReadLogLognLogin(LogLognIO logLognIO, HttpServletRequest request) throws Exception {
+	public List<LogLognIO> ReadLogLognLogin(LogLognIO logLognIO,SgnSingIO sgnSingIO, HttpServletRequest request) throws Exception {
 	    String userId = logLognIO.getUserId();
 	    String userPwd = logLognIO.getUserPwd();
-	    
-	    	List<LogLognIO> returnList = logLognCMO.SelectLogLognNm(userId, userPwd, request);
-	    	return returnList;
+	    sgnSingCMO.readSalt(userId);
+	    List<LogLognIO> returnList = logLognCMO.SelectLogLognNm(userId, userPwd, request);
+	    return returnList;
 	    
 	}
 	

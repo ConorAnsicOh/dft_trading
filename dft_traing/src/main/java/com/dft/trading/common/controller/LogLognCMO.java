@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.dft.trading.account.io.LogLognIO;
+import com.dft.trading.account.io.SgnSingIO;
 import com.dft.trading.account.service.LogLognBMO;
 
 
@@ -16,7 +17,6 @@ public class LogLognCMO {
 
 	@Autowired
 	private LogLognBMO logLognBMO;
-	
 	public List<LogLognIO> SelectLogLognId(String userEmail, String userNm) {
 		
 		return logLognBMO.SelectLogLognId(userEmail, userNm);
@@ -28,7 +28,6 @@ public class LogLognCMO {
 	}
 	
 	public List<LogLognIO> SelectLogLognNm(String userId, String userPwd, HttpServletRequest request) throws Exception {
-		
-		return logLognBMO.SelectLogLognNm(userId, userPwd, request);
+		return logLognBMO.SelectLogLognNm(userId, userPwd,request);
 	}
 }

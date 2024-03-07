@@ -12,6 +12,7 @@ public class SgnSingIO {
 	private String userNnm;
 	private String userState;
 	private String userDv;
+	private String salt;
 	private Date   lstUdtDt;
 	public String getUserId() {
 		return userId;
@@ -57,6 +58,12 @@ public class SgnSingIO {
 		this.userDv = userDv;
 	}
 	
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 	public Date getLstUdtDt() {
 		return lstUdtDt;
 	}
@@ -65,8 +72,10 @@ public class SgnSingIO {
 	}
 	@Override
 	public String toString() {
-		return "SngUpIO [userId=" + userId + ", userPw=" + userPw + ", userEmail=" + userEmail + ", userNm=" + userNm
-				+ ", userNnm=" + userNnm + ", userDv=" + userDv + ", lstUdtDt=" + lstUdtDt + "]";
+		return "SgnSingIO [userId=" + userId + ", userPw=" + userPw + ", userEmail=" + userEmail + ", userNm=" + userNm
+				+ ", userNnm=" + userNnm + ", userState=" + userState + ", userDv=" + userDv + ", salt=" + salt
+				+ ", lstUdtDt=" + lstUdtDt + "]";
 	}
+	
 	
 }
