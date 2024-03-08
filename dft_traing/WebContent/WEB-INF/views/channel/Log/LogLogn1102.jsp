@@ -157,7 +157,7 @@
 			}
 
 			$.ajax({
-	            url: '/findIdAjax',
+	            url: 'findIdAjax',
 	            type: 'POST',
 	            data: param,
 	            headers: {

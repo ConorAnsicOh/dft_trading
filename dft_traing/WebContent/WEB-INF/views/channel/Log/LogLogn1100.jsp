@@ -94,14 +94,15 @@
 		}
 	}  
 </script> -->
+<script src="/WEB-INF/js/commonDft.js"></script>
 <script>
 	function openPopup() {
-	    window.open("/moveFindPwd", "Popup", "width=600,height=400");
+	    dftUtil.popOpen("moveFindPwd", 600, 400);
 	}
 </script>
 <script>
 	function openPopup2() {
-	    window.open("/moveFindId", "Popup", "width=600,height=400");
+	    window.open("moveFindId", "Popup", "width=600,height=400");
 	}
 </script>
 <script type="text/javascript">
@@ -115,7 +116,7 @@
 			}
 	
 			$.ajax({
-	            url: '/loginAjax',
+	            url: 'loginAjax',
 	            type: 'POST',
 	            data: param,
 	            headers: {
@@ -123,7 +124,7 @@
 	            },
 	            success: function(data) {
 	            	alert("로그인이 완료되었습니다.");
-	            	window.open("/");
+	            	dftUtil.movePage("/");
 	            },
 	            error: function(xhr, status, error) {
 	            	var responseText = xhr.responseText
