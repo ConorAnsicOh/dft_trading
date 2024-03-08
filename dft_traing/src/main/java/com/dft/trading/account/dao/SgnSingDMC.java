@@ -23,5 +23,5 @@ public class SgnSingDMC extends SqlSessionDaoSupport  implements SgnSingDMO {
 	public String selectOneList(String userId) {
 		return getSqlSession().selectOne("com.dft.trading.account.dao.sql.SgnSingSQL.findByUserId", userId);
 	}
-
+ 
 }

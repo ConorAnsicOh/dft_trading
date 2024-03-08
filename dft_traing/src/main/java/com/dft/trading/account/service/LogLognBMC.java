@@ -27,7 +27,7 @@ public class LogLognBMC implements LogLognBMO {
 	public List<LogLognIO> SelectLogLognPwd(String userId) {
 		return logLognDMO.SelectLogLognPwd(userId);
 	}
-	
+	 
 	@Override
 	public List<LogLognIO> SelectLogLognNm(String userId, String userPwd, HttpServletRequest request) throws Exception {
 		try {

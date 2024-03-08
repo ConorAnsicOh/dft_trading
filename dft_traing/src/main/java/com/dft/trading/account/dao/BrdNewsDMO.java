@@ -14,3 +14,4 @@ public interface BrdNewsDMO {
 
     void increaseCount(Long id);
 }
+ 

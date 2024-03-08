@@ -29,3 +29,4 @@ public class BrdNewsCMO {
     	brdNewsBMO.increaseCount(id);
     }
 }
+ 

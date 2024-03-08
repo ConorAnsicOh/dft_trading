@@ -16,7 +16,7 @@
 li {
     width: auto;
     display: block; /* 수직으로 배치하도록 설정 */
-}
+} 
 .right-content {
     width: 350px;
     float: right;

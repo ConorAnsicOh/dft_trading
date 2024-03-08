@@ -26,3 +26,4 @@ public class ServletAppContext implements WebMvcConfigurer {
 		registry.addResourceHandler("/**").addResourceLocations("/resources/");
 	}
 }
+ 

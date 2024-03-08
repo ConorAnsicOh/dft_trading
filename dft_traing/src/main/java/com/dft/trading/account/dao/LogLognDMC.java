@@ -20,7 +20,7 @@ public class LogLognDMC extends SqlSessionDaoSupport implements LogLognDMO {
 		params.put("userNm", userNm);
 		return getSqlSession().selectList("com.dft.trading.account.dao.sql.LogLognSQL.SelectLogLognId", params);
 	}
-
+ 
 	@Override
 	public List<LogLognIO> SelectLogLognPwd(String userId) {
 		Map<String, String> params = new HashMap<>();

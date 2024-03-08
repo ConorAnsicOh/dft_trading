@@ -30,4 +30,4 @@ public class BrdNewsBMC implements BrdNewsBMO {
     	brdNewsDMO.increaseCount(id);
     }
 }
-
+ 

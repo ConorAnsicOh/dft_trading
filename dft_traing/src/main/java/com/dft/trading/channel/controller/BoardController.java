@@ -29,7 +29,7 @@ public class BoardController {
 //        this.brdNewsCMO = brdNewsCMO;
 //    }
     
-
+ 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String main(Model model) {
         List<BrdNewsIO> myObjects = brdNewsCMO.getAllObjects();

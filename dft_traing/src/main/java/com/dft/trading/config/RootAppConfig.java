@@ -34,7 +34,7 @@ public class RootAppConfig {
         dataSource.setPassword("Dft0305!!");
         return dataSource;
     }
-
+ 
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 		

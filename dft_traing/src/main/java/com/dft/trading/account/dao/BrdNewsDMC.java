@@ -23,6 +23,6 @@ public class BrdNewsDMC extends SqlSessionDaoSupport implements BrdNewsDMO {
         getSqlSession().update("com.dft.trading.account.dao.sql.BrdNewsSQL.increaseCount", id);
         logger.info("increaseCount 메서드 실행 완료.");
     }
-}
+} 
 
 

@@ -21,7 +21,7 @@ public class SgnSingIO {
 	}
 	public String getUserPw() {
 		return userPw;
-	}
+	} 
 	public String setUserPw(String userPw) {
 		return this.userPw = userPw;
 	}

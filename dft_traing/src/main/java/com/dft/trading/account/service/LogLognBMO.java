@@ -15,3 +15,4 @@ public interface LogLognBMO {
 
 	List<LogLognIO> SelectLogLognNm(String userId, String userPwd, HttpServletRequest request) throws Exception;
 }
+ 

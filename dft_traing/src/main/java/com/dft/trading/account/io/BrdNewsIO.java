@@ -19,7 +19,7 @@ public class BrdNewsIO {
 	private Date   newsTime;
 	private int    newsCount;
 	
-	
+	 
 	public int getNewsCount() {
 		return newsCount;
 	}

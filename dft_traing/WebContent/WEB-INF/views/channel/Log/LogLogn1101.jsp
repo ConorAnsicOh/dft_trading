@@ -25,7 +25,7 @@
 <div class="popupFind2">
 	<ul class="find2Tab">
 		<li class="password"><a class="on">비밀번호찾기</a></li>
-	</ul>
+	</ul> 
 	<h2 class="hiddenTit">비밀번호찾기</h2>
 	<div class="contents">
 		<p class="stit">비밀번호 찾기를 위한 회원ID를 입력해주세요.</p>

@@ -59,7 +59,7 @@ public class SpringWebApplicationInitializer extends AbstractAnnotationConfigDis
 
 		return new String[] {"/"};
 	}
-	
+	 
 	// Parameter Encoding.
 	@Override
 	protected Filter[] getServletFilters() {

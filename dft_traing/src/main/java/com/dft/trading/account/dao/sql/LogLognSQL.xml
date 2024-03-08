@@ -18,7 +18,7 @@
     <select id="SelectLogLognId" parameterType="java.util.Map" resultMap="userInfoResultMap">
         SELECT user_id FROM DFT_USER_INFO WHERE user_email = #{userEmail} AND user_nm = #{userNm}
     </select>
-    
+     
     <select id="SelectLogLognPwd" parameterType="java.util.Map" resultMap="userInfoResultMap">
         SELECT user_pwd FROM DFT_USER_INFO WHERE user_id = #{userId}
     </select>

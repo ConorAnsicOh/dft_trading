@@ -32,3 +32,4 @@ public class LogLognCMO {
 		return logLognBMO.SelectLogLognNm(userId, userPwd, request);
 	}
 }
+ 

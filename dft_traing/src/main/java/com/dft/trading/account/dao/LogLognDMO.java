@@ -15,3 +15,4 @@ public interface LogLognDMO {
 	
 	List<LogLognIO> SelectLogLognNm(String userId, String userPwd);
 }
+ 

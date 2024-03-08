@@ -30,7 +30,7 @@ public class SgnSingBMC implements SgnSingBMO {
 		map.put("userNnm", sgnSignIo.getUserNnm());
 		sgnSingDMO.createUser(map);
 	}
-
+ 
 	@Override
 	public String SgngSingDuplicateCheck(String userId) {
 		return sgnSingDMO.selectOneList(userId);

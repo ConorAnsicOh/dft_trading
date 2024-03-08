@@ -30,4 +30,4 @@ public class SingupController {
 		sgnSingCMO.singUp(sgnSingIO);
 		return "/Log/LogLogn1100";
 	}
-}
+} 

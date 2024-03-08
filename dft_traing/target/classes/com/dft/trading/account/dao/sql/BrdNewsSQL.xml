@@ -21,7 +21,7 @@
         SELECT * FROM DFT_NEWS
         ORDER BY NEWS_COUNT DESC;
     </select>
-    
+     
     
     <update id="increaseCount">
     UPDATE DFT_NEWS
