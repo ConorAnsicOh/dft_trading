@@ -48,7 +48,7 @@ public class LoginController {
 	    String userId = logLognIO.getUserId();
 	    String userPwd = logLognIO.getUserPwd();
 	    
-	    List<LogLognIO> returnList = logLognCMO.SelectLogLognNm(userId, userPwd, request);
+	    List<LogLognIO> returnList = logLognCMO.SelectLogLognAll(userId, userPwd, request);
 	    
 	    return returnList;
 	}

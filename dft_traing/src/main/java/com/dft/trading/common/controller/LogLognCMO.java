@@ -27,9 +27,9 @@ public class LogLognCMO {
 		return logLognBMO.SelectLogLognPwd(userId);
 	}
 	
-	public List<LogLognIO> SelectLogLognNm(String userId, String userPwd, HttpServletRequest request) throws Exception {
+	public List<LogLognIO> SelectLogLognAll(String userId, String userPwd, HttpServletRequest request) throws Exception {
 		
-		return logLognBMO.SelectLogLognNm(userId, userPwd, request);
+		return logLognBMO.SelectLogLognAll(userId, userPwd, request);
 	}
 }
  

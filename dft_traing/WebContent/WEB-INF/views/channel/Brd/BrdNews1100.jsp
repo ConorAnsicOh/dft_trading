@@ -110,18 +110,12 @@ $(document).ready(function() {
             <a href="https://news.daum.net/" id="kakaoServiceLogo" data-tiara-layer="GNB service news">
                 <span class="ir_wa">뉴스</span>
             </a>
-		<c:choose>
-		    <c:when test="${userNm != null}">
-		        <h3><%= userNm %>님 반갑습니다!</h3>
-		        <h3> <a href="/logout">로그아웃</a></h3>
-		    </c:when>
-		    <c:otherwise>
+		    <c:if test="${userNm == null || userNm == ''}">
 		        <h3>
 		            <a href="/login" style="margin-right:20px;">로그인</a>
 		            <a href="/SingUp">회원가입</a>
 		        </h3>
-		    </c:otherwise>
-		</c:choose>
+		    </c:if>
         </h1>
         <strong class="screen_out">관련 서비스</strong>
 <div id="wrapMinidaum"></div>
@@ -176,7 +170,7 @@ $(document).ready(function() {
    </ul>
  </div>
 </div>
-   <!-- 오른쪽 영역 -->
+<!-- 오른쪽 영역 -->
 <c:set var="maxCount" value="0" />
 <c:set var="maxNewsItem" value="" />
 <c:forEach var="newsItem" items="${NewsD}">
@@ -185,33 +179,44 @@ $(document).ready(function() {
         <c:set var="maxNewsItem" value="${newsItem}" />
     </c:if>
 </c:forEach>
-
-		<c:if test="${not empty maxNewsItem}">
-              <div class="right-content">
-              <ul>
-                 <li>
-	            <div class="item_issue" data-tiara-layer="headline1">
-	                    <a href="${maxNewsItem.newsLink}"  class="wrap_thumb" data-tiara-layer="article_main" data-tiara-id="20240228145406463" data-tiara-type="harmony" data-tiara-ordnum="1" data-tiara-custom="contentUniqueKey=hamny-20240228145406463&clusterId=5590543,5889430,5150091,5139529&clusterTitle=[언론사픽] 주요뉴스,사회,섹션 실시간뉴스-사회,[랭크업] 유레이더 1 OR 2 추가점수&keywordType=NONE,NONE,NONE,NONE">
-	                        <img src="${maxNewsItem.newsImage}" class="thumb_g" alt=""“20살 되자마자 생활비 30만원 내라는 엄마… 막막하다”">
-	                    </a>
-	                <div class="cont_thumb">
-	                <span class="info_thumb">
-	                    <span class="logo_cp">
-	                            <img src="https://t1.daumcdn.net/media/news/news2016/cp/cp_kukminilbo.gif" class="thumb_g" alt="국민일보" onerror="this.style.display='none';">
-	                    </span>
-	                    <span class="txt_category">사회</span>
-	                </span>
-	                    <strong class="tit_g">
-	                        <a href="${maxNewsItem.newsLink}" data-news-id="${maxNewsItem.newsId}" class="link_txt news_Link" data-tiara-layer="article_main" data-tiara-id="20240228145406463" data-tiara-type="harmony" data-tiara-ordnum="1" data-tiara-custom="contentUniqueKey=hamny-20240228145406463&clusterId=5590543,5889430,5150091,5139529&clusterTitle=[언론사픽] 주요뉴스,사회,섹션 실시간뉴스-사회,[랭크업] 유레이더 1 OR 2 추가점수&keywordType=NONE,NONE,NONE,NONE">
-	                            ${maxNewsItem.newsTitle}
-	                        </a>
-	                    </strong>
-	                </div>
-	            </div>
-	        </li>
-      </ul>
-     </div>
-     </c:if>
+<c:if test="${userNm != null && userNm != ''}">
+<div class="right-content">
+	<br>
+	<div style="display:inline-block;vertical-align:top;">
+		<h3><%= userNm %>님 반갑습니다!&emsp;&emsp;&emsp;&emsp;&emsp;</h3>
+	</div>
+	<div style="display:inline-block;">
+        <img src="/images/newJins.jpg" height="150" width="120">
+    </div>
+	<h3><a href="/goInfo">정보수정</a>&emsp;&emsp;&emsp;&emsp;<a href="/goPwdCh">비밀번호변경</a>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="/logout">로그아웃</a></h3>
+</div>
+</c:if>
+<c:if test="${not empty maxNewsItem}">
+	<div class="right-content">
+		<ul>
+			<li>
+				<div class="item_issue" data-tiara-layer="headline1">
+					<a href="${maxNewsItem.newsLink}"  class="wrap_thumb" data-tiara-layer="article_main" data-tiara-id="20240228145406463" data-tiara-type="harmony" data-tiara-ordnum="1" data-tiara-custom="contentUniqueKey=hamny-20240228145406463&clusterId=5590543,5889430,5150091,5139529&clusterTitle=[언론사픽] 주요뉴스,사회,섹션 실시간뉴스-사회,[랭크업] 유레이더 1 OR 2 추가점수&keywordType=NONE,NONE,NONE,NONE">
+					<img src="${maxNewsItem.newsImage}" class="thumb_g" alt=""“20살 되자마자 생활비 30만원 내라는 엄마… 막막하다”">
+				</a>
+				<div class="cont_thumb">
+					<span class="info_thumb">
+					<span class="logo_cp">
+						<img src="https://t1.daumcdn.net/media/news/news2016/cp/cp_kukminilbo.gif" class="thumb_g" alt="국민일보" onerror="this.style.display='none';">
+					</span>
+					<span class="txt_category">사회</span>
+					</span>
+					<strong class="tit_g">
+						<a href="${maxNewsItem.newsLink}" data-news-id="${maxNewsItem.newsId}" class="link_txt news_Link" data-tiara-layer="article_main" data-tiara-id="20240228145406463" data-tiara-type="harmony" data-tiara-ordnum="1" data-tiara-custom="contentUniqueKey=hamny-20240228145406463&clusterId=5590543,5889430,5150091,5139529&clusterTitle=[언론사픽] 주요뉴스,사회,섹션 실시간뉴스-사회,[랭크업] 유레이더 1 OR 2 추가점수&keywordType=NONE,NONE,NONE,NONE">
+							${maxNewsItem.newsTitle}
+						</a>
+					</strong>
+				</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</c:if>
 </div>
 </section>
 </main>

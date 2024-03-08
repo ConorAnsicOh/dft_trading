@@ -13,6 +13,7 @@
         <result property="userState" column="user_state"/>
         <result property="userDv" column="user_dv"/>
         <result property="lstUdtDt" column="lst_udt_dt"/>
+        <result property="userImage" column="user_image"/>
     </resultMap>
 
     <select id="SelectLogLognId" parameterType="java.util.Map" resultMap="userInfoResultMap">
@@ -23,8 +24,8 @@
         SELECT user_pwd FROM DFT_USER_INFO WHERE user_id = #{userId}
     </select>
     
-    <select id="SelectLogLognNm" parameterType="java.util.Map" resultMap="userInfoResultMap">
-        SELECT user_nm FROM DFT_USER_INFO WHERE user_id = #{userId} AND user_pwd = #{userPwd}
+    <select id="SelectLogLognAll" parameterType="java.util.Map" resultMap="userInfoResultMap">
+        SELECT * FROM DFT_USER_INFO WHERE user_id = #{userId} AND user_pwd = #{userPwd}
     </select>
     
 </mapper>

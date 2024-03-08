@@ -13,6 +13,6 @@ public interface LogLognBMO {
 	
 	List<LogLognIO> SelectLogLognPwd(String userId);
 
-	List<LogLognIO> SelectLogLognNm(String userId, String userPwd, HttpServletRequest request) throws Exception;
+	List<LogLognIO> SelectLogLognAll(String userId, String userPwd, HttpServletRequest request) throws Exception;
 }
  

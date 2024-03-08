@@ -14,8 +14,15 @@ public class LogLognIO {
 	private String userState;
 	private String userDv;
 	private Date lstUdtDt;
+	private String userImage;
 	
 	
+	public String getUserImage() {
+		return userImage;
+	}
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
+	}
 	public String getUserId() {
 		return userId;
 	}

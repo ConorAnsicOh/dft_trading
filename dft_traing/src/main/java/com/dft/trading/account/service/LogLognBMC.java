@@ -29,9 +29,9 @@ public class LogLognBMC implements LogLognBMO {
 	}
 	 
 	@Override
-	public List<LogLognIO> SelectLogLognNm(String userId, String userPwd, HttpServletRequest request) throws Exception {
+	public List<LogLognIO> SelectLogLognAll(String userId, String userPwd, HttpServletRequest request) throws Exception {
 		try {
-			List<LogLognIO> returnList = logLognDMO.SelectLogLognNm(userId, userPwd);
+			List<LogLognIO> returnList = logLognDMO.SelectLogLognAll(userId, userPwd);
 			
 			String userNm = "";
 			if (!returnList.isEmpty()) {
