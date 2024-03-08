@@ -90,7 +90,7 @@
 			}
 	
 			$.ajax({
-	            url: 'findPwdAjax',
+	            url: '/findPwdAjax',
 	            type: 'POST',
 	            data: param,
 	            headers: {

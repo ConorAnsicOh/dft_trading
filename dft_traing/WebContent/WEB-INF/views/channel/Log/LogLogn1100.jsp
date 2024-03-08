@@ -94,15 +94,15 @@
 		}
 	}  
 </script> -->
-<script src="/WEB-INF/js/commonDft.js"></script>
+<script src="/WebContent/WEB-INF/js/commonDft.js"></script>
 <script>
 	function openPopup() {
-	    dftUtil.popOpen("moveFindPwd", 600, 400);
+	    popOpen("/moveFindPwd", 600, 400);
 	}
 </script>
 <script>
 	function openPopup2() {
-	    window.open("moveFindId", "Popup", "width=600,height=400");
+	    window.open("/moveFindId", "Popup", "width=600,height=400");
 	}
 </script>
 <script type="text/javascript">
@@ -116,7 +116,7 @@
 			}
 	
 			$.ajax({
-	            url: 'loginAjax',
+	            url: '/loginAjax',
 	            type: 'POST',
 	            data: param,
 	            headers: {

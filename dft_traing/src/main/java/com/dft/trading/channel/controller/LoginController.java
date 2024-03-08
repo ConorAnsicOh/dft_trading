@@ -26,7 +26,7 @@ public class LoginController {
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@RequestMapping(value = "login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request)throws Exception {
 		HttpSession session = request.getSession();
 		
@@ -39,11 +39,11 @@ public class LoginController {
 		System.out.println("userNm 초기화 됨? : " + userNm);
 		System.out.println("loginCnt 초기화 됨? : " + loginCnt);
 		
-		return "/Log/LogLogn1100";
+		return "Log/LogLogn1100";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "loginAjax", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/loginAjax", method = RequestMethod.POST, produces = "application/json")
 	public List<LogLognIO> loginAjax(LogLognIO logLognIO, HttpServletRequest request) throws Exception {
 	    String userId = logLognIO.getUserId();
 	    String userPwd = logLognIO.getUserPwd();
@@ -53,7 +53,7 @@ public class LoginController {
 	    return returnList;
 	}
 	 
-	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 	    HttpSession session = request.getSession();
 	    
@@ -71,13 +71,13 @@ public class LoginController {
 	    return "redirect:/"; // 로그아웃 성공 후 리다이렉트할 URL
 	}
 	
-	@RequestMapping(value = "moveFindId", method = RequestMethod.GET)
+	@RequestMapping(value = "/moveFindId", method = RequestMethod.GET)
 	public String moveFindId() {
-		return "/Log/LogLogn1102";
+		return "Log/LogLogn1102";
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "findIdAjax", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/findIdAjax", method = RequestMethod.POST, produces = "application/json")
 	public List<LogLognIO> findIdAjax(LogLognIO logLognIO) {
 	    // Controller logic here...
 	    String userEmail = logLognIO.getUserEmail();
@@ -88,13 +88,13 @@ public class LoginController {
 	    return returnList;
 	}
 	
-	@RequestMapping(value = "moveFindPwd", method = RequestMethod.GET)
+	@RequestMapping(value = "/moveFindPwd", method = RequestMethod.GET)
 	public String moveFindPwd() {
-		return "/Log/LogLogn1101";
+		return "Log/LogLogn1101";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "findPwdAjax", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/findPwdAjax", method = RequestMethod.POST, produces = "application/json")
 	public List<LogLognIO> findPwdAjax(LogLognIO logLognIO) {
 	    String userId = logLognIO.getUserId();
 	    
