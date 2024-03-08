@@ -27,6 +27,6 @@
     </select>
     
       <select id="readSalt" resultType="String">
-        SELECT salt FROM DFT_USER_INFO WHERE USER_ID = #{userId} 
+        SELECT USER_PWD FROM DFT_USER_INFO WHERE USER_ID = #{userId} 
     </select>
 </mapper>

@@ -23,6 +23,7 @@ public class LogLognBMC implements LogLognBMO {
 	@Autowired
 	private SgnSingDMO sgnSingDMO;
 	private Sha256Util sha256Util;
+	
 	@Override
 	public List<LogLognIO> SelectLogLognId(String userEmail, String userNm) {
 		return logLognDMO.SelectLogLognId(userEmail, userNm);
@@ -35,14 +36,15 @@ public class LogLognBMC implements LogLognBMO {
 	
 	@Override
 	public List<LogLognIO> SelectLogLognNm(String userId, String userPwd,HttpServletRequest request) throws Exception {
-		SgnSingIO sgnSignIo = new SgnSingIO();
-		LogLognIO logLognIO = new LogLognIO();
-		String salt = sgnSingDMO.readSalt(userId);
-		String encryptionPassword = new Sha256Util().sha256Encode(logLognIO.getUserPwd(), salt);
-		System.out.println("salt:::" + salt);
-		System.out.println("encryptionPassword:::" + encryptionPassword);
+//		LogLognIO logLognIO = new LogLognIO();
+		String password =sgnSingDMO.readSalt(userId);
+//		String salt = sgnSingDMO.readSalt(userId);
+//		String encryptionPassword = sha256Util.sha256Encode(userPwd,salt);
+//		System.out.println("salt:::" + salt);
+//		System.out.println("password:::" + password);
+//		System.out.println("encryptionPassword:::" + encryptionPassword);
 		try {
-			List<LogLognIO> returnList = logLognDMO.SelectLogLognNm(userId, encryptionPassword);
+			List<LogLognIO> returnList = logLognDMO.SelectLogLognNm(userId, password);
 			String userNm = "";
 			if (!returnList.isEmpty()) {
 	            userNm = returnList.get(0).getUserNm();
