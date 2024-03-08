@@ -24,5 +24,12 @@ public class SgnSingCMO {
 		public String readSalt(String userId) {
 		  return sgnSingBMO.readSalt(userId); 
 	}
+		public String emailDuplicateCheck(String userEmail) {
+			// TODO Auto-generated method stub
+			return sgnSingBMO.emailDuplicateCheck(userEmail);
+		}
+		public void chagePassword(String userPwd, String userEmail) {
+			 sgnSingBMO.chagePassword(userPwd,userEmail);
+		}
 	
 }

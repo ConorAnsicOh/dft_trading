@@ -12,6 +12,10 @@ public interface SgnSingBMO {
 
 	String readSalt(String userId);
 
+	String emailDuplicateCheck(String userEmail);
+
+	void chagePassword(String userPwd,String userEmail);
+
 
 
 }

@@ -25,7 +25,7 @@
 <div class="popupFind2">
 	<ul class="find2Tab">
 		<li class="password"><a class="on">비밀번호찾기</a></li>
-	</ul>
+	</ul> 
 	<h2 class="hiddenTit">비밀번호찾기</h2>
 	<div class="contents">
 		<p class="stit">비밀번호 찾기를 위한 회원ID를 입력해주세요.</p>
@@ -90,17 +90,21 @@
 			}
 	
 			$.ajax({
-	            url: '/Login/FdpwdAjax',
+	            url: '/findPwdAjax',
 	            type: 'POST',
 	            data: param,
 	            headers: {
 	                'Accept': 'application/json'
 	            },
 	            success: function(data) {
-	            	var userData = data[0];
-	            	var userPwd = userData.userPwd
-	            	
-	            	alert("회원님의 패스워드는" + "\n" + userPwd + "입니다.");
+	            	if(data == null || data == ""){
+	            		alert("해당 정보가 조회되지 않습니다.")
+	            	}else{
+		            	var userData = data[0];
+		            	var userPwd = userData.userPwd
+		            	
+		            	alert("회원님의 패스워드는" + "\n" + userPwd + "입니다.");
+	            	}
 	            },
 	            error: function(xhr, status, error) {
 	                console.error('Error:', error);

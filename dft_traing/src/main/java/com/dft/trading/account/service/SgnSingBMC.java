@@ -47,6 +47,22 @@ public class SgnSingBMC implements SgnSingBMO {
 	public String readSalt(String userId) {
 		return sgnSingDMO.readSalt(userId);
 	}
+
+	@Override
+	public String emailDuplicateCheck(String userEmail) {
+		return sgnSingDMO.selectOneEmail(userEmail);
+	}
+
+	@Override
+	public void chagePassword(String userPwd,String userEmail) {
+		SgnSingIO sgnSingIO = new SgnSingIO();
+		String changePwd = sgnSingIO.setUserPw(sha256Util.sha256Encode(userPwd, sha256Util.getSalt()));
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("userPw", changePwd);
+		map.put("userEmail", userEmail);
+		
+		sgnSingDMO.updatePassword(map);
+	}
 	
 
 

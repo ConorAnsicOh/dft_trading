@@ -14,15 +14,15 @@ public class SingupController {
 	@Autowired
 	private SgnSingCMO sgnSingCMO;
 	
-	
-	@RequestMapping(value = "/test1", method = RequestMethod.GET)
-	public String subMain() {
-		
-		return "/channel/test1";
-	}
+	//회원가입view
 	@RequestMapping(value = "/SingUp", method = RequestMethod.GET)
 	public String SingUp() {
 		return "/Sgn/SgnSign1100";
+	}
+	//비밀번호변경view(아이디입력페이지 -> 새 비밀번호 페이지 -> 완료페이지나,알럯)
+	@RequestMapping(value = "/passwordChange", method = RequestMethod.GET)
+	public String passwordChange() {
+		return "/Sgn/SgnSign1101";
 	}
 	//회원가입 처리
 	@ResponseBody
@@ -40,5 +40,20 @@ public class SingupController {
 		result= sgnSingCMO.SgngSingDuplicateCheck(userId);
 		
 		return result;
+	}
+	//이메일 중복체크
+	@ResponseBody
+	@RequestMapping(value = "/emailCheck", method = RequestMethod.POST)
+	public String emailDuplicateCheck(String userEmail) {
+		String result ="";  
+		result= sgnSingCMO.emailDuplicateCheck(userEmail);
+		System.out.println("result :::" + result);
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping(value = "/pwdChange", method = RequestMethod.POST)
+	public String changePassword(String userPwd, String userEmail) {
+		sgnSingCMO.chagePassword(userPwd,userEmail);
+		return "/Log/LogLogn1100";
 	}
 }

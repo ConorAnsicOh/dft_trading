@@ -18,5 +18,9 @@ public interface SgnSingDMO {
 
 	String readSalt(String userId);
 
+	String selectOneEmail(String userEmail);
+
+	void updatePassword(HashMap<String, Object> map);
+
 
 }

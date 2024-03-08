@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dft.trading.account.io.LogLognIO;
-import com.dft.trading.account.io.SgnSingIO;
 import com.dft.trading.common.controller.LogLognCMO;
-import com.dft.trading.common.controller.SgnSingCMO;
 
 
 
@@ -23,13 +23,13 @@ public class LoginController {
 	
 	@Autowired
     private LogLognCMO logLognCMO;
-	@Autowired
-	private SgnSingCMO sgnSingCMO;
 	
-	@RequestMapping(value = "/Login", method = RequestMethod.GET)
-	public String logn(HttpServletRequest request)throws Exception {
+	private Logger logger = LoggerFactory.getLogger(getClass());
+	
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String login(HttpServletRequest request)throws Exception {
 		HttpSession session = request.getSession();
-		 
+		
 		session.setAttribute("userNm", "");
 		session.setAttribute("loginCnt", 0);
 
@@ -42,19 +42,43 @@ public class LoginController {
 		return "/Log/LogLogn1100";
 	}
 	
-	@RequestMapping(value = "/Login/Fdpw", method = RequestMethod.GET)
-	public String fdpw() {
-		return "/Log/LogLogn1101";
+	@ResponseBody
+	@RequestMapping(value = "loginAjax", method = RequestMethod.POST, produces = "application/json")
+	public List<LogLognIO> loginAjax(LogLognIO logLognIO, HttpServletRequest request) throws Exception {
+	    String userId = logLognIO.getUserId();
+	    String userPwd = logLognIO.getUserPwd();
+	    
+	    List<LogLognIO> returnList = logLognCMO.SelectLogLognNm(userId, userPwd, request);
+	    
+	    return returnList;
+	}
+	 
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+	    HttpSession session = request.getSession();
+	    
+	    session.removeAttribute("userNm");
+	    session.removeAttribute("loginCnt");
+	    
+		String userNm = (String) session.getAttribute("userNm");
+		Integer loginCnt = (Integer) session.getAttribute("loginCnt");
+		
+	    session.invalidate();
+		
+        logger.info("이선기 조회수 증가 컨트롤러!!!!!!!!::::::::::::" + userNm);
+        logger.info("이선기 조회수 증가 컨트롤러!!!!!!!!::::::::::::" + loginCnt);
+
+	    return "redirect:/"; // 로그아웃 성공 후 리다이렉트할 URL
 	}
 	
-	@RequestMapping(value = "/Login/Fdid", method = RequestMethod.GET)
-	public String fdid() {
+	@RequestMapping(value = "moveFindId", method = RequestMethod.GET)
+	public String moveFindId() {
 		return "/Log/LogLogn1102";
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/Login/FdidAjax", method = RequestMethod.POST, produces = "application/json")
-	public List<LogLognIO> ReadLogLognId(LogLognIO logLognIO) {
+	@RequestMapping(value = "findIdAjax", method = RequestMethod.POST, produces = "application/json")
+	public List<LogLognIO> findIdAjax(LogLognIO logLognIO) {
 	    // Controller logic here...
 	    String userEmail = logLognIO.getUserEmail();
 	    String userNm = logLognIO.getUserNm();
@@ -64,9 +88,14 @@ public class LoginController {
 	    return returnList;
 	}
 	
+	@RequestMapping(value = "moveFindPwd", method = RequestMethod.GET)
+	public String moveFindPwd() {
+		return "/Log/LogLogn1101";
+	}
+	
 	@ResponseBody
-	@RequestMapping(value = "/Login/FdpwdAjax", method = RequestMethod.POST, produces = "application/json")
-	public List<LogLognIO> ReadLogLognPwd(LogLognIO logLognIO) {
+	@RequestMapping(value = "findPwdAjax", method = RequestMethod.POST, produces = "application/json")
+	public List<LogLognIO> findPwdAjax(LogLognIO logLognIO) {
 	    String userId = logLognIO.getUserId();
 	    
 	    List<LogLognIO> returnList = logLognCMO.SelectLogLognPwd(userId);
@@ -74,22 +103,5 @@ public class LoginController {
 	    System.out.println("결과값 ::: " + returnList);
 
 	    return returnList;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/Login/LoginAjax", method = RequestMethod.POST, produces = "application/json")
-	public List<LogLognIO> ReadLogLognLogin(LogLognIO logLognIO,SgnSingIO sgnSingIO, HttpServletRequest request) throws Exception {
-	    String userId = logLognIO.getUserId();
-	    String userPwd = logLognIO.getUserPwd();
-	    sgnSingCMO.readSalt(userId);
-	    List<LogLognIO> returnList = logLognCMO.SelectLogLognNm(userId, userPwd, request);
-	    return returnList;
-	    
-	}
-	
-	@RequestMapping(value = "/Login/moveAjax", method = RequestMethod.GET)
-	public String ReadLogLognMove() {
-
-        return "/Brd/BrdNews1100";
 	}
 }

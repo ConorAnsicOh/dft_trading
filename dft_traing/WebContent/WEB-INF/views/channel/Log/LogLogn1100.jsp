@@ -17,7 +17,7 @@
 			<li class="btNexon"><button type="button" data-a2s="click" data-object="P_LOGIN" data-option="{&quot;Name&quot;:&quot;Tab_NexonID&quot;}">회원ID 로그인</button></li>
 		</ul>
 	</div>
-
+ 
 		</div>
 		<div id="contents">
 			
@@ -94,14 +94,15 @@
 		}
 	}  
 </script> -->
+<script src="/js/commonDft.js"></script>
 <script>
 	function openPopup() {
-	    window.open("/Login/Fdpw", "Popup", "width=600,height=400");
+	    popOpen("/moveFindPwd", 600, 400);
 	}
 </script>
 <script>
 	function openPopup2() {
-	    window.open("/Login/Fdid", "Popup", "width=600,height=400");
+		popOpen("/moveFindId", 600, 400);
 	}
 </script>
 <script type="text/javascript">
@@ -115,7 +116,7 @@
 			}
 	
 			$.ajax({
-	            url: '/Login/LoginAjax',
+	            url: '/loginAjax',
 	            type: 'POST',
 	            data: param,
 	            headers: {
@@ -123,18 +124,11 @@
 	            },
 	            success: function(data) {
 	            	alert("로그인이 완료되었습니다.");
-	            	$.ajax({
-	    	            url: '/Brd/main',
-	    	            type: 'GET',
-	    	            success: function(data) {
-	    	            },
-	    	            error: function(xhr, status, error) {
-	    	            }
-	    	        });
+	            	movePage("/");
 	            },
 	            error: function(xhr, status, error) {
 	            	var responseText = xhr.responseText
-	            	var errorMessage = responseText.match(/<p><b>메시지<\/b>(.*?)<\/p>/)[1].replace(/Request processing failed; nested exception is java.lang.Exception:\s*/, '');
+	            	var errorMessage = responseText.match(/<p><b>메시지<\/b>(.*?)<\/p>/)[1].replace(/Request processing failed; nested exception is java.lang.Exception: \s*/, '');
 	                alert(errorMessage);
 	            }
 	        });

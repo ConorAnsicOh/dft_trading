@@ -22,8 +22,7 @@ public class LogLognBMC implements LogLognBMO {
 	private LogLognDMO logLognDMO;	
 	@Autowired
 	private SgnSingDMO sgnSingDMO;
-	private Sha256Util sha256Util;
-	
+//	private Sha256Util sha256Util;
 	@Override
 	public List<LogLognIO> SelectLogLognId(String userEmail, String userNm) {
 		return logLognDMO.SelectLogLognId(userEmail, userNm);
@@ -40,18 +39,15 @@ public class LogLognBMC implements LogLognBMO {
 		String password =sgnSingDMO.readSalt(userId);
 //		String salt = sgnSingDMO.readSalt(userId);
 //		String encryptionPassword = sha256Util.sha256Encode(userPwd,salt);
-//		System.out.println("salt:::" + salt);
-//		System.out.println("password:::" + password);
-//		System.out.println("encryptionPassword:::" + encryptionPassword);
 		try {
-			List<LogLognIO> returnList = logLognDMO.SelectLogLognNm(userId, password);
-			String userNm = "";
-			if (!returnList.isEmpty()) {
-	            userNm = returnList.get(0).getUserNm();
-				System.out.println("userNm ::: " + userNm);
-				HttpSession session = request.getSession();
-				
-				session.setAttribute("userNm", userNm);
+			List<LogLognIO> returnList =logLognDMO.SelectLogLognNm(userId, password);
+				String userNm = "";
+				if (!returnList.isEmpty()) {
+		            userNm = returnList.get(0).getUserNm();
+					HttpSession session = request.getSession();
+					
+					session.setAttribute("userNm", userNm);
+		   
 	        }else {
 	        	HttpSession session = request.getSession();
 		        

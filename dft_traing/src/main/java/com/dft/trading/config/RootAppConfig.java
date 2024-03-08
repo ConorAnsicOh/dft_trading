@@ -12,11 +12,12 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import com.dft.trading.account.dao.BrdNewsDMC;
+import com.dft.trading.account.dao.BrdNewsDMO;
 import com.dft.trading.account.dao.LogLognDMC;
 import com.dft.trading.account.dao.LogLognDMO;
 import com.dft.trading.account.dao.SgnSingDMC;
 import com.dft.trading.account.dao.SgnSingDMO;
-import com.dft.trading.common.controller.LogLognCMO;
 
 
 // Bean 넣는곳
@@ -33,7 +34,7 @@ public class RootAppConfig {
         dataSource.setPassword("Dft0305!!");
         return dataSource;
     }
-
+ 
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 		
@@ -61,10 +62,18 @@ public class RootAppConfig {
         logLognDMC.setSqlSessionFactory(sqlSessionFactory);
         return logLognDMC;
     }
+    
     @Bean
     public SgnSingDMO sgnSingDMO(SqlSessionFactory sqlSessionFactory) {
     	SgnSingDMC sgnSingDMC = new SgnSingDMC();
     	sgnSingDMC.setSqlSessionFactory(sqlSessionFactory);
         return sgnSingDMC;
+    }
+    
+    @Bean // UserInfoDMO 빈을 추가
+    public BrdNewsDMO brdNewsDMO(SqlSessionFactory sqlSessionFactory) {
+    	BrdNewsDMC brdNewsDMC = new BrdNewsDMC();
+    	brdNewsDMC.setSqlSessionFactory(sqlSessionFactory);
+        return brdNewsDMC;
     }
 }

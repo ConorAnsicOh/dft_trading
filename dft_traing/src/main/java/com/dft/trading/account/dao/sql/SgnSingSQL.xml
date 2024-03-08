@@ -22,11 +22,24 @@
           VALUES(#{userId}, #{userPw}, #{userEmail}, #{userNm}, #{userNnm}, 'N', '01',#{salt})     
     </insert>
     
-      <select id="findByUserId" resultType="String">
+    <!-- id 중복체크 -->
+    <select id="findByUserId" resultType="String">
         SELECT * FROM DFT_USER_INFO WHERE USER_ID = #{userId} 
     </select>
     
+    <!-- email 중복체크 -->
+    <select id="findByEmail" resultType="String">
+        SELECT USER_EMAIL FROM DFT_USER_INFO WHERE USER_EMAIL = #{userEmail} 
+    </select>
+    
+    <!-- salt 조회 -->
       <select id="readSalt" resultType="String">
         SELECT USER_PWD FROM DFT_USER_INFO WHERE USER_ID = #{userId} 
     </select>
+    <!-- 비밀번호 변경 -->
+    <update id="udatePassword">
+    	UPDATE DFT_USER_INFO
+    	SET USER_PWD = #{userPw}
+    	WHERE USER_EMAIL = #{userEmail}
+    </update>
 </mapper>

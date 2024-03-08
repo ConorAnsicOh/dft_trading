@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dft.trading.account.dao.sql.BrdNewsSQL">
+
+
+    <resultMap id="newsResultMap" type="com.dft.trading.account.io.BrdNewsIO">
+        <id 	property="newsId" 		column="news_id"/>
+        <result property="newsLink" 	column="news_link"/>
+        <result property="newsTitle" 	column="news_title"/>
+        <result property="newsImage" 	column="news_image"/>
+        <result property="newsDetail" 	column="news_detail"/>
+        <result property="newsCom" 		column="news_com"/>
+        <result property="newsTime" 	column="news_time"/>
+        <result property="newsCount" 	column="news_count"/>
+    </resultMap>
+
+    <!-- 모든 뉴스 정보를 조회하는 쿼리 -->
+    <select id="getAllObjects" resultMap="newsResultMap">
+        SELECT * FROM DFT_NEWS
+        ORDER BY NEWS_COUNT DESC;
+    </select>
+     
+    
+    <update id="increaseCount">
+    UPDATE DFT_NEWS
+    SET NEWS_COUNT = NEWS_COUNT + 1
+    WHERE NEWS_ID  = #{id}
+	</update>
+    
+</mapper>

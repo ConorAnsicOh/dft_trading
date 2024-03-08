@@ -30,4 +30,17 @@ public class SgnSingDMC extends SqlSessionDaoSupport  implements SgnSingDMO {
 		
 	}
 
+	@Override
+	public String selectOneEmail(String userEmail) {
+		return getSqlSession().selectOne("com.dft.trading.account.dao.sql.SgnSingSQL.findByEmail", userEmail);
+	}
+
+	@Override
+	public void updatePassword(HashMap<String, Object> map) {
+		getSqlSession().update("com.dft.trading.account.dao.sql.SgnSingSQL.udatePassword", map);
+		
+	}
+
+
+
 }
