@@ -94,7 +94,7 @@
 		}
 	}  
 </script> -->
-<script src="/WebContent/WEB-INF/js/commonDft.js"></script>
+<script src="/js/commonDft.js"></script>
 <script>
 	function openPopup() {
 	    popOpen("/moveFindPwd", 600, 400);
@@ -102,7 +102,7 @@
 </script>
 <script>
 	function openPopup2() {
-	    window.open("/moveFindId", "Popup", "width=600,height=400");
+		popOpen("/moveFindId", 600, 400);
 	}
 </script>
 <script type="text/javascript">
@@ -124,7 +124,7 @@
 	            },
 	            success: function(data) {
 	            	alert("로그인이 완료되었습니다.");
-	            	dftUtil.movePage("/");
+	            	movePage("/");
 	            },
 	            error: function(xhr, status, error) {
 	            	var responseText = xhr.responseText
