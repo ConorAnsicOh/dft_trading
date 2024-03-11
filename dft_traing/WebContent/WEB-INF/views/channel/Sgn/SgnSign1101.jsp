@@ -116,6 +116,7 @@ function pwdChange(){
 	        	userPwd: userPwd,
 	        	userEmail : userEmail
 	        },
+	        	console.log("data:::;:", data);
 	        success: function(response) {
 	        	alert("비밀번호변경완료..!!");
 	        	window.location.href = "login";

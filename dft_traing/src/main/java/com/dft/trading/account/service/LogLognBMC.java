@@ -37,8 +37,11 @@ public class LogLognBMC implements LogLognBMO {
 	public List<LogLognIO> SelectLogLognNm(String userId, String userPwd,HttpServletRequest request) throws Exception {
 		LogLognIO logLognIO = new LogLognIO();
 		String salt = sgnSingDMO.readSalt(userId);
+		System.out.println("salt::::" + salt);
 		String userPassword = userPwd;
+		System.out.println("userPassword::::" + userPassword);
 		userPassword = sha256Util.sha256Encode(userPassword, salt);
+		System.out.println("@userPassword@:::::" + userPassword);
 		logLognIO.setUserPwd(userPassword);
 		try {
 			List<LogLognIO> returnList =logLognDMO.SelectLogLognNm(userId, userPassword);

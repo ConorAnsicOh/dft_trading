@@ -53,12 +53,22 @@ public class SgnSingBMC implements SgnSingBMO {
 
 	@Override
 	public void chagePassword(String userPwd,String userEmail) {
+		System.out.println("*****************************비밀번호변경************************");
 		SgnSingIO sgnSingIO = new SgnSingIO();
-		String changePwd = sgnSingIO.setUserPw(sha256Util.sha256Encode(userPwd, sha256Util.getSalt()));
+		System.out.println("userPwd::::::::::" + userPwd);
+		String salt = sgnSingDMO.readSalt(userEmail);
+		System.out.println("salt::::::" + salt);
+		sgnSingIO.setSalt(salt);
+		String changePwd = sgnSingIO.setUserPw(sha256Util.sha256Encode(userPwd, salt));
+		
+		System.out.println("changePwd" + changePwd);
+		
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("userPw", changePwd);
 		map.put("userEmail", userEmail);
 		
+		System.out.println("MAP ::::::::" + map);
+		System.out.println("*****************************비밀번호변경************************");
 		sgnSingDMO.updatePassword(map);
 	}
 	
