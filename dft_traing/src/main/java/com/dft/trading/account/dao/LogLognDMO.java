@@ -12,6 +12,7 @@ public interface LogLognDMO {
 	List<LogLognIO> SelectLogLognId(String userEmail, String userNm);
 	
 	List<LogLognIO> SelectLogLognPwd(String userId);
+
+	List<LogLognIO> SelectLogLognNm(String userId, String userPassword);
 	
-	List<LogLognIO> SelectLogLognNm(String userId, String userPwd);
 }

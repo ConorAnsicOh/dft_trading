@@ -84,34 +84,17 @@
           </div>  
 </body>
 <script type="text/javascript">
-//중복체크
-function isEmailCheck(){
-	var userEmail = $("#userEmail").val();
-    $.ajax({
-        type: "post",
-        url: "/emailCheck", // 서버의 컨트롤러 엔드포인트
-        data: {
-        	userEmail : userEmail
-        },
-        success: function(response) {
-          	if(response == userEmail ){
-          		alert("인증가능한 이메일입니다.");
-          	}else{
-          		alert("등록된 이메일이 아닙니다.");
-          	}
-          	
-        },
-        error: function(xhr, status, error) {
-            // 요청이 실패했을 때 수행할 작업
-            console.error(error);
-        }
-    });
-}
+//변경버튼
 function pwdChange(){
 	if($("#userEmail").val() == ""){
 		alert("이메일을 입력해주세요!!");
 		return false;
 	}
+    if(!isEmailCheck){
+        alert("이메일 중복 체크를 해주세요!!");
+        return false;
+    }
+	
 	if($("#userPwd").val() == ""){
 		alert("비밀번호를 입력해주세요!!");
 		return false;
@@ -142,7 +125,35 @@ function pwdChange(){
 	            console.error(error);
 	        }
 	    });
-	 
+}
+
+//중복체크 여부를 저장하는 변수
+var isEmailChecked = false;
+
+//중복체크
+function isEmailCheck(){
+	var userEmail = $("#userEmail").val();
+    $.ajax({
+        type: "post",
+        url: "/emailCheck", // 서버의 컨트롤러 엔드포인트
+        data: {
+        	userEmail : userEmail
+        },
+        success: function(response) {
+          	if(response == userEmail ){
+          		 isEmailChecked = true;
+          		alert("인증가능한 이메일입니다.");
+          	}else{
+          		 isEmailChecked = false;
+          		alert("등록된 이메일이 아닙니다.");
+          	}
+          	
+        },
+        error: function(xhr, status, error) {
+            // 요청이 실패했을 때 수행할 작업
+            console.error(error);
+        }
+    });
 }
 
 </script>

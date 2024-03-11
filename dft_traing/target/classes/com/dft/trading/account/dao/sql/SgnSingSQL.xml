@@ -34,7 +34,7 @@
     
     <!-- salt 조회 -->
       <select id="readSalt" resultType="String">
-        SELECT USER_PWD FROM DFT_USER_INFO WHERE USER_ID = #{userId} 
+        SELECT salt FROM DFT_USER_INFO WHERE USER_ID = #{userId} 
     </select>
     <!-- 비밀번호 변경 -->
     <update id="udatePassword">
