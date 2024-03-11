@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.dft.trading.account.dao.BrdNewsDMC;
 import com.dft.trading.account.dao.BrdNewsDMO;
@@ -75,5 +77,13 @@ public class RootAppConfig {
     	BrdNewsDMC brdNewsDMC = new BrdNewsDMC();
     	brdNewsDMC.setSqlSessionFactory(sqlSessionFactory);
         return brdNewsDMC;
+    }
+    
+    @Bean
+    public MultipartResolver multipartResolver() {
+    	CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+    	resolver.setMaxUploadSize(10485760);
+    	resolver.setMaxUploadSizePerFile(10485760);
+    	return resolver;
     }
 }

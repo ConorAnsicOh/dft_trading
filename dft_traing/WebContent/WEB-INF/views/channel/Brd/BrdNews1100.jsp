@@ -96,6 +96,7 @@ $(document).ready(function() {
 <body>
 <%
     String userNm = (String) session.getAttribute("userNm");
+	String userId = (String) session.getAttribute("userId");
 %>
 
 <div class="container-doc">
@@ -186,9 +187,9 @@ $(document).ready(function() {
 		<h3><%= userNm %>님 반갑습니다!&emsp;&emsp;&emsp;&emsp;&emsp;</h3>
 	</div>
 	<div style="display:inline-block;">
-        <img src="/images/newJins.jpg" height="150" width="120">
+        <img src="/images/${userId}.jpg" height="150" width="120">
     </div>
-	<h3><a href="/goInfo">정보수정</a>&emsp;&emsp;&emsp;&emsp;<a href="/goPwdCh">비밀번호변경</a>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="/logout">로그아웃</a></h3>
+	<h3><a href="#" onclick="goModf()">정보수정</a>&emsp;&emsp;&emsp;&emsp;<a href="/goPwdCh">비밀번호변경</a>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="/logout">로그아웃</a></h3>
 </div>
 </c:if>
 <c:if test="${not empty maxNewsItem}">
@@ -272,7 +273,13 @@ $(document).ready(function() {
 </footer>
 
 <script src="//t1.daumcdn.net/media/kraken/news/402cee8/footer.merged.js"></script>
-    <script async type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js"></script>
+<script async type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js"></script>
+<script src="js/commonDft.js"></script>
+<script>
+	function goModf(){
+		movePage("/modify");
+	}
+</script>
 </div>
 </body>
 </html>

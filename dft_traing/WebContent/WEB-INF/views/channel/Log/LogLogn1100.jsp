@@ -94,46 +94,45 @@
 		}
 	}  
 </script> -->
-<script src="/js/commonDft.js"></script>
-<script>
+<script src="js/commonDft.js"></script>
+<script type="text/javascript">
 	function openPopup() {
 	    popOpen("/moveFindPwd", 600, 400);
 	}
-</script>
-<script>
+	
 	function openPopup2() {
 		popOpen("/moveFindId", 600, 400);
 	}
-</script>
-<script type="text/javascript">
+
 	$(".button01").click(function(){
 		if (validate()) {
-			var userId = $("#userId").val();
-			var userPwd = $("#userPwd").val();
-			var param = {
-					userId : userId,
-					userPwd : userPwd
-			}
-	
-			$.ajax({
-	            url: '/loginAjax',
-	            type: 'POST',
-	            data: param,
-	            headers: {
-	                'Accept': 'application/json'
-	            },
-	            success: function(data) {
-	            	alert("로그인이 완료되었습니다.");
-	            	movePage("/");
-	            },
-	            error: function(xhr, status, error) {
-	            	var responseText = xhr.responseText
-	            	var errorMessage = responseText.match(/<p><b>메시지<\/b>(.*?)<\/p>/)[1].replace(/Request processing failed; nested exception is java.lang.Exception: \s*/, '');
-	                alert(errorMessage);
-	            }
-	        });
-		};
+			ajaxLogn1100();
+		}
 	});
+	
+	function ajaxLogn1100(){
+		var userId = $("#userId").val();
+		var userPwd = $("#userPwd").val();
+		
+		var param = {
+				userId : userId,
+				userPwd : userPwd
+		}
+		
+		callAjax("/loginAjax", param, successLogn1100, errorLogn1100);
+	}
+	
+	function successLogn1100(data){
+		alert("로그인이 완료되었습니다.");
+		movePage("/");
+	}
+	
+	function errorLogn1100(xhr, status, error){
+		var responseText = xhr.responseText
+       	var errorMessage = responseText.match(/<p><b>메시지<\/b>(.*?)<\/p>/)[1].replace(/Request processing failed; nested exception is java.lang.Exception: \s*/, '');
+		
+        alert(errorMessage);
+	}
 
 	function validate(){
 		let userId = $("#userId").val();

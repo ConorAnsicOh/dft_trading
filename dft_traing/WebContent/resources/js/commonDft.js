@@ -25,11 +25,28 @@ function movePage(url, scrollbars, replace){
     window.open(url, "_blank", features);
 }
 
+// AJAX 사용
+function callAjax(url, data, successFn, errorFn, method){
+	if(isNull(method)){
+		method = "POST";
+	}
+	
+	$.ajax({
+        url: url,
+        type: method,
+        data: data,
+        success: successFn,
+        error: errorFn
+    });
+}
+
 // 입력값이 null인지 체크
 function isNull(input){
-	if(input.value == null || input.value == ""){
+	if(input == null || input == "" || input == undefined){
 		return true;
-	}else{
+	}else if(input.value == null || input.value == "" || input.value == undefined){
+			
+		}else{
 		return false;
 	}
 }

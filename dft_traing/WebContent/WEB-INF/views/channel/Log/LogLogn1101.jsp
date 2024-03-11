@@ -81,36 +81,37 @@
 	}  
 </script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/commonDft.js"></script>
 <script type="text/javascript">
 	function nextPwd() {
 		if (validate3()) {
-			var userId = $("#InputId").val();
-			var param = {
-					userId : userId
-			}
-	
-			$.ajax({
-	            url: '/findPwdAjax',
-	            type: 'POST',
-	            data: param,
-	            headers: {
-	                'Accept': 'application/json'
-	            },
-	            success: function(data) {
-	            	if(data == null || data == ""){
-	            		alert("해당 정보가 조회되지 않습니다.")
-	            	}else{
-		            	var userData = data[0];
-		            	var userPwd = userData.userPwd
-		            	
-		            	alert("회원님의 패스워드는" + "\n" + userPwd + "입니다.");
-	            	}
-	            },
-	            error: function(xhr, status, error) {
-	                console.error('Error:', error);
-	            }
-	        });
+			ajaxLogn1101();
 		}
+	}
+	
+	function ajaxLogn1101(){
+		var userId = $("#InputId").val();
+		
+		var param = {
+				userId : userId
+		}
+		
+		callAjax("/findPwdAjax", param, successLogn1101, errorLogn1101);
+	}
+	
+	function successLogn1101(data){
+		if(data == null || data == ""){
+    		alert("해당 정보가 조회되지 않습니다.")
+    	}else{
+        	var userData = data[0];
+        	var userPwd = userData.userPwd
+        	
+        	alert("회원님의 패스워드는" + "\n" + userPwd + "입니다.");
+    	}
+	}
+	
+	function errorLogn1101(xhr, status, error){
+		console.error('Error:', eroor);
 	}
 
 	function validate3(){

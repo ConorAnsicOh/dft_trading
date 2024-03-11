@@ -146,38 +146,39 @@
 	}  
 </script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/commonDft.js"></script>
 <script type="text/javascript">
 	function nextId() {
 		if (validate2()) {
-			var userEmail = $("#InputEmail").val();
-			var userNm = $("#InputNm").val();
-			var param = {
-					userEmail : userEmail,
-					userNm : userNm
-			}
-
-			$.ajax({
-	            url: '/findIdAjax',
-	            type: 'POST',
-	            data: param,
-	            headers: {
-	                'Accept': 'application/json'
-	            },
-	            success: function(data) {
-	            	if(data == null || data == ""){
-	            		alert("해당 정보가 조회되지 않습니다.");
-	            	}else{
-		            	var userData = data[0];
-		            	var userId = userData.userId
-		            	
-		            	alert("회원님의 ID는" + "\n" + userId + "입니다.");
-	            	}
-	            },
-	            error: function(xhr, status, error) {
-	                console.error('Error:', error);
-	            }
-	        });
+			ajaxLogn1100();
 		}
+	}
+	
+	function ajaxLogn1100(){
+		var userEmail = $("#InputEmail").val();
+		var userNm = $("#InputNm").val();
+		
+		var param = {
+				userEmail : userEmail,
+				userNm : userNm
+		}
+		
+		callAjax("/findIdAjax", param, successLogn1102, errorLogn1102);
+	}
+	
+	function successLogn1102(){
+		if(data == null || data == ""){
+    		alert("해당 정보가 조회되지 않습니다.");
+    	}else{
+        	var userData = data[0];
+        	var userId = userData.userId
+        	
+        	alert("회원님의 ID는" + "\n" + userId + "입니다.");
+    	}
+	}
+	
+	function errorLogn1102(){
+		console.error('Error:', error);
 	}
 
 	function validate2() {

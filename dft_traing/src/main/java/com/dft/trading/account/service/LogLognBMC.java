@@ -34,14 +34,15 @@ public class LogLognBMC implements LogLognBMO {
 			List<LogLognIO> returnList = logLognDMO.SelectLogLognAll(userId, userPwd);
 			
 			String userNm = "";
+			String userNnm = "";
 			if (!returnList.isEmpty()) {
 	            userNm = returnList.get(0).getUserNm();
-	            
-				System.out.println("userNm ::: " + userNm);
-				
+	            userNnm = returnList.get(0).getUserNnm();
 				HttpSession session = request.getSession();
 				
 				session.setAttribute("userNm", userNm);
+				session.setAttribute("userNnm", userNnm);
+				session.setAttribute("userId", userId);
 	        }else {
 	        	HttpSession session = request.getSession();
 		        
