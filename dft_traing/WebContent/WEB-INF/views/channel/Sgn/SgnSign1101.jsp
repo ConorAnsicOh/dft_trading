@@ -60,7 +60,6 @@
                     <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
                     <div class="col-lg-10">
                         <input type="email" class="form-control" id="userEmail" name="userEmail" data-rule-required="true" placeholder="이메일을 입력해주세요" maxlength="40">
-                        <div style="text-align: right;"><button type="button" class="btn btn-primary" onclick="isEmailCheck();">중복체크</button></div>
                     </div>
                 </div>
                  <div class="form-group" id="divPassword">
@@ -116,7 +115,6 @@ function pwdChange(){
 	        	userPwd: userPwd,
 	        	userEmail : userEmail
 	        },
-	        	console.log("data:::;:", data);
 	        success: function(response) {
 	        	alert("비밀번호변경완료..!!");
 	        	window.location.href = "login";
@@ -142,10 +140,8 @@ function isEmailCheck(){
         },
         success: function(response) {
           	if(response == userEmail ){
-          		 isEmailChecked = true;
           		alert("인증가능한 이메일입니다.");
           	}else{
-          		 isEmailChecked = false;
           		alert("등록된 이메일이 아닙니다.");
           	}
           	
@@ -157,5 +153,9 @@ function isEmailCheck(){
     });
 }
 
+$("#userEmail").blur(function(){
+	isEmailCheck()
+	
+});
 </script>
 </html>

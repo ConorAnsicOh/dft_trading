@@ -57,7 +57,6 @@
                     <label for="inputId" class="col-lg-2 control-label">아이디</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control onlyAlphabetAndNumber" id="userId" name="userId"  data-rule-required="true" placeholder="아이디를 입력해주세요" maxlength="20">
-	                    <div style="text-align: right;"><button type="button" class="btn btn-primary" onclick="isDuplicateCheck()">중복체크</button></div>
                     </div>
                 </div>
                 <div class="form-group" id="divPassword">
@@ -169,9 +168,14 @@ function isDuplicateCheck(){
         error: function(xhr, status, error) {
             // 요청이 실패했을 때 수행할 작업
             console.error(error);
+            callback(true);
         }
     });
 }
 
+$("#userId").blur(function(){
+	isDuplicateCheck()
+	
+});
 </script>
 </html>
