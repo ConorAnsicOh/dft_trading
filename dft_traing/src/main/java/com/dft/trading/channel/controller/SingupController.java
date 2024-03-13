@@ -30,7 +30,7 @@ public class SingupController {
 		sgnSingCMO.singUp(sgnSingIO);
 		
 		return "/Log/LogLogn1100";
-	}
+	} 
 	//중복체크
 	@ResponseBody
 	@RequestMapping(value = "/duplicateCheck", method = RequestMethod.POST)
