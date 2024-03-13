@@ -16,6 +16,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.dft.trading.account.dao.BrdNewsDMC;
 import com.dft.trading.account.dao.BrdNewsDMO;
+import com.dft.trading.account.dao.InfModfDMC;
+import com.dft.trading.account.dao.InfModfDMO;
 import com.dft.trading.account.dao.LogLognDMC;
 import com.dft.trading.account.dao.LogLognDMO;
 import com.dft.trading.account.dao.SgnSingDMC;
@@ -58,11 +60,18 @@ public class RootAppConfig {
         return new JdbcTemplate(dataSource);
     }
     
-    @Bean // UserInfoDMO 빈을 추가
+    @Bean
     public LogLognDMO logLognDMO(SqlSessionFactory sqlSessionFactory) {
         LogLognDMC logLognDMC = new LogLognDMC();
         logLognDMC.setSqlSessionFactory(sqlSessionFactory);
         return logLognDMC;
+    }
+    
+    @Bean
+    public InfModfDMO infModfDMO(SqlSessionFactory sqlSessionFactory) {
+        InfModfDMC infModfDMC = new InfModfDMC();
+        infModfDMC.setSqlSessionFactory(sqlSessionFactory);
+        return infModfDMC;
     }
     
     @Bean

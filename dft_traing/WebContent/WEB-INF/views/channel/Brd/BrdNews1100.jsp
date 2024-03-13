@@ -187,7 +187,13 @@ $(document).ready(function() {
 		<h3><%= userNm %>님 반갑습니다!&emsp;&emsp;&emsp;&emsp;&emsp;</h3>
 	</div>
 	<div style="display:inline-block;">
-        <img src="/images/${userId}.jpg" height="150" width="120">
+        <% 
+	        byte[] userImg = (byte[]) session.getAttribute("userImg");
+	        if (userImg != null) {
+	            String base64Image = javax.xml.bind.DatatypeConverter.printBase64Binary(userImg);
+	    %>
+	    <img src="data:image/jpeg;base64, <%= base64Image %>" alt="Image" height="150" width="120">
+	    <% } %>
     </div>
 	<h3><a href="#" onclick="goModf()">정보수정</a>&emsp;&emsp;&emsp;&emsp;<a href="/goPwdCh">비밀번호변경</a>&emsp;&emsp;&emsp;&emsp;&emsp;<a href="/logout">로그아웃</a></h3>
 </div>

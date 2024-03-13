@@ -1,5 +1,8 @@
 package com.dft.trading.account.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +30,13 @@ public class LogLognBMC implements LogLognBMO {
 	public List<LogLognIO> SelectLogLognPwd(String userId) {
 		return logLognDMO.SelectLogLognPwd(userId);
 	}
+	
+	public class FileReaderExample {
+	    public static byte[] readFileContent(String filePath) throws IOException {
+	        File file = new File(filePath);
+	        return Files.readAllBytes(file.toPath());
+	    }
+	}
 	 
 	@Override
 	public List<LogLognIO> SelectLogLognAll(String userId, String userPwd, HttpServletRequest request) throws Exception {
@@ -43,6 +53,11 @@ public class LogLognBMC implements LogLognBMO {
 				session.setAttribute("userNm", userNm);
 				session.setAttribute("userNnm", userNnm);
 				session.setAttribute("userId", userId);
+				
+				String filePath = "C://images/" + userId + ".jpg";
+	            byte[] fileContent = FileReaderExample.readFileContent(filePath);
+	            
+	            session.setAttribute("userImg", fileContent);
 	        }else {
 	        	HttpSession session = request.getSession();
 		        

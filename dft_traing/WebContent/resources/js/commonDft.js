@@ -10,19 +10,8 @@ function popOpen(url, width, height){
 }
 
 // 화면 이동 함수
-function movePage(url, scrollbars, replace){
-    var features = "";
-    // 스크롤바 특성 추가
-    if (scrollbars) {
-        features += "scrollbars=yes,";
-    }
-    // replace 옵션 추가
-    if (replace) {
-        features += "replace=true";
-    }
-
-    // 새 창 열기
-    window.open(url, "_blank", features);
+function movePage(url){
+    window.location.href = url;
 }
 
 // AJAX 사용
